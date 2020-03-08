@@ -51,6 +51,22 @@ public class Topo implements Serializable {
 		this.utilisateur = utilisateur;
 		this.site = site;
 	}
+	
+	public Topo(String nomTopo, String descriptionTopo, String editeur, String dateParution, int largeur, int longueur,
+			String langue, int nbPages, String statutTopo, Utilisateur utilisateur, Site site) {
+		super();
+		this.nomTopo = nomTopo;
+		this.descriptionTopo = descriptionTopo;
+		this.editeur = editeur;
+		this.dateParution = dateParution;
+		this.largeur = largeur;
+		this.longueur = longueur;
+		this.langue = langue;
+		this.nbPages = nbPages;
+		this.statutTopo = statutTopo;
+		this.utilisateur = utilisateur;
+		this.site = site;
+	}
 	public Long getCodeTopo() {
 		return codeTopo;
 	}

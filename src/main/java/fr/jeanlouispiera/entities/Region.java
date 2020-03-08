@@ -30,6 +30,12 @@ public class Region implements Serializable {
 		this.nomRegion = nomRegion;
 		this.pays = pays;
 	}
+	
+	public Region(String nomRegion, Pays pays) {
+		super();
+		this.nomRegion = nomRegion;
+		this.pays = pays;
+	}
 	public Long getCodeRegion() {
 		return codeRegion;
 	}

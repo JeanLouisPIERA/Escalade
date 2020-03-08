@@ -25,6 +25,11 @@ public class NiveauDePratique implements Serializable{
 		this.nomNiveauPratique = nomNiveauPratique;
 		this.sites = sites;
 	}
+	
+	public NiveauDePratique(String nomNiveauPratique) {
+		super();
+		this.nomNiveauPratique = nomNiveauPratique;
+	}
 	public Long getCodeNiveauPratique() {
 		return codeNiveauPratique;
 	}

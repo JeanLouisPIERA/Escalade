@@ -28,6 +28,13 @@ public class CarteIgn implements Serializable {
 		this.nomCarte = nomCarte;
 		this.sites = sites;
 	}
+	
+	public CarteIgn(int numCarte, String nomCarte) {
+		super();
+		this.numCarte = numCarte;
+		this.nomCarte = nomCarte;
+	}
+
 	public Long getCodeCarte() {
 		return codeCarte;
 	}

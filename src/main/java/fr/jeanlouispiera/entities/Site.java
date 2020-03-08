@@ -81,6 +81,29 @@ public class Site implements Serializable {
 		this.carteIgn = carteIgn;
 		this.commune = commune;
 	}
+	
+	public Site(String nomSite, int altitude, int nbVoies, int hauteurMin, int hauteurMax, int longueurTotaleVoies,
+			String tag, NiveauDePratique niveauDePratique, TypeRoche typeRoche, Cotation cotation,
+			TypeEscalade typeEscalade, NiveauEscalade niveauEscalade, Orientation orientation, Massif massif,
+			CarteIgn carteIgn, Commune commune) {
+		super();
+		this.nomSite = nomSite;
+		this.altitude = altitude;
+		this.nbVoies = nbVoies;
+		this.hauteurMin = hauteurMin;
+		this.hauteurMax = hauteurMax;
+		this.longueurTotaleVoies = longueurTotaleVoies;
+		this.tag = tag;
+		this.niveauDePratique = niveauDePratique;
+		this.typeRoche = typeRoche;
+		this.cotation = cotation;
+		this.typeEscalade = typeEscalade;
+		this.niveauEscalade = niveauEscalade;
+		this.orientation = orientation;
+		this.massif = massif;
+		this.carteIgn = carteIgn;
+		this.commune = commune;
+	}
 	public Long getNumSite() {
 		return numSite;
 	}

@@ -40,6 +40,17 @@ public class Commentaire implements Serializable {
 		this.topo = topo;
 		this.site = site;
 	}
+	
+	public Commentaire(String titreCommentaire, Date dateCommentaire, String contenuCommentaire,
+			Utilisateur utilisateur, Topo topo, Site site) {
+		super();
+		this.titreCommentaire = titreCommentaire;
+		this.dateCommentaire = dateCommentaire;
+		this.contenuCommentaire = contenuCommentaire;
+		this.utilisateur = utilisateur;
+		this.topo = topo;
+		this.site = site;
+	}
 	public Long getNum_Commentaire() {
 		return num_Commentaire;
 	}

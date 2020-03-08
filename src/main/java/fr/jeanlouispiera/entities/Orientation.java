@@ -24,6 +24,11 @@ public class Orientation implements Serializable {
 		this.codeOrientation = codeOrientation;
 		this.nomOrientation = nomOrientation;
 	}
+	
+	public Orientation(String nomOrientation) {
+		super();
+		this.nomOrientation = nomOrientation;
+	}
 	public Long getCodeOrientation() {
 		return codeOrientation;
 	}

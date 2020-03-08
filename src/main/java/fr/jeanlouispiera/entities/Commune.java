@@ -1,9 +1,9 @@
 package fr.jeanlouispiera.entities;
 
 import java.io.Serializable;
+
 import java.util.Collection;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -28,6 +28,12 @@ public class Commune implements Serializable{
 	public Commune(Long codeCommune, String nomCommune, Departement departement) {
 		super();
 		this.codeCommune = codeCommune;
+		this.nomCommune = nomCommune;
+		this.departement = departement;
+	}
+	
+	public Commune(String nomCommune, Departement departement) {
+		super();
 		this.nomCommune = nomCommune;
 		this.departement = departement;
 	}

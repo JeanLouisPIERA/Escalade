@@ -24,6 +24,11 @@ public class TypeRoche implements Serializable {
 		this.codeRoche = codeRoche;
 		this.nomRoche = nomRoche;
 	}
+	
+	public TypeRoche(String nomRoche) {
+		super();
+		this.nomRoche = nomRoche;
+	}
 	public Long getCodeRoche() {
 		return codeRoche;
 	}
