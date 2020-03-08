@@ -3,7 +3,17 @@ package fr.jeanlouispiera.entities;
 import java.io.Serializable;
 import java.util.Collection;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+@Entity
 public class Topo implements Serializable {
+	private static final long serialVersionUID = 1L;
+	@Id @GeneratedValue
+	private Long codeTopo;
 	private String nomTopo;
 	private String descriptionTopo;
 	private String editeur;
@@ -13,16 +23,22 @@ public class Topo implements Serializable {
 	private String langue;
 	private int nbPages;
 	private String statutTopo;
+	@OneToMany(mappedBy="topo")
 	private Collection <Commentaire> commentaires;
+	@ManyToOne
+	@JoinColumn(name="USER")
 	private Utilisateur utilisateur;
+	@ManyToOne
+	@JoinColumn(name="SITE")
 	private Site site;
 	public Topo() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Topo(String nomTopo, String descriptionTopo, String editeur, String dateParution, int largeur, int longueur,
-			String langue, int nbPages, String statutTopo, Utilisateur utilisateur, Site site) {
+	public Topo(Long codeTopo, String nomTopo, String descriptionTopo, String editeur, String dateParution, int largeur,
+			int longueur, String langue, int nbPages, String statutTopo, Utilisateur utilisateur, Site site) {
 		super();
+		this.codeTopo = codeTopo;
 		this.nomTopo = nomTopo;
 		this.descriptionTopo = descriptionTopo;
 		this.editeur = editeur;
@@ -34,6 +50,12 @@ public class Topo implements Serializable {
 		this.statutTopo = statutTopo;
 		this.utilisateur = utilisateur;
 		this.site = site;
+	}
+	public Long getCodeTopo() {
+		return codeTopo;
+	}
+	public void setCodeTopo(Long codeTopo) {
+		this.codeTopo = codeTopo;
 	}
 	public String getNomTopo() {
 		return nomTopo;
@@ -107,6 +129,7 @@ public class Topo implements Serializable {
 	public void setSite(Site site) {
 		this.site = site;
 	}
+	
 	
 	
 	

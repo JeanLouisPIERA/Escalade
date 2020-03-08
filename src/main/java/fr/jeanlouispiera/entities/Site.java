@@ -3,7 +3,17 @@ package fr.jeanlouispiera.entities;
 import java.io.Serializable;
 import java.util.Collection;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+@Entity
 public class Site implements Serializable {
+	private static final long serialVersionUID = 1L;
+	@Id @GeneratedValue
+	private Long numSite;
 	private String nomSite;
 	private int altitude;
 	private int nbVoies;
@@ -11,26 +21,47 @@ public class Site implements Serializable {
 	private int hauteurMax;
 	private int longueurTotaleVoies;
 	private String tag;
+	@OneToMany(mappedBy="site")
 	private Collection<Topo> topos;
+	@OneToMany(mappedBy="site")
 	private Collection<Commentaire> commentaires;
+	@ManyToOne
+	@JoinColumn(name="PRACTLEVEL")
 	private NiveauDePratique niveauDePratique;
+	@ManyToOne
+	@JoinColumn(name="ROCHE")
 	private TypeRoche typeRoche;
+	@ManyToOne
+	@JoinColumn(name="COTATION")
 	private Cotation cotation;
+	@ManyToOne
+	@JoinColumn(name="TYPE")
 	private TypeEscalade typeEscalade;
+	@ManyToOne
+	@JoinColumn(name="ESCALEVEL")
 	private NiveauEscalade niveauEscalade;
+	@ManyToOne
+	@JoinColumn(name="ORIENTATION")
 	private Orientation orientation;
+	@ManyToOne
+	@JoinColumn(name="MASSIF")
 	private Massif massif;
+	@ManyToOne
+	@JoinColumn(name="CARTE_IGN")
 	private CarteIgn carteIgn;
+	@ManyToOne
+	@JoinColumn(name="COMMUNE")
 	private Commune commune;
 	public Site() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Site(String nomSite, int altitude, int nbVoies, int hauteurMin, int hauteurMax, int longueurTotaleVoies,
-			String tag, NiveauDePratique niveauDePratique, TypeRoche typeRoche, Cotation cotation,
-			TypeEscalade typeEscalade, NiveauEscalade niveauEscalade, Orientation orientation, Massif massif,
-			CarteIgn carteIgn, Commune commune) {
+	public Site(Long numSite, String nomSite, int altitude, int nbVoies, int hauteurMin, int hauteurMax,
+			int longueurTotaleVoies, String tag, Collection<Topo> topos, Collection<Commentaire> commentaires,
+			NiveauDePratique niveauDePratique, TypeRoche typeRoche, Cotation cotation, TypeEscalade typeEscalade,
+			NiveauEscalade niveauEscalade, Orientation orientation, Massif massif, CarteIgn carteIgn, Commune commune) {
 		super();
+		this.numSite = numSite;
 		this.nomSite = nomSite;
 		this.altitude = altitude;
 		this.nbVoies = nbVoies;
@@ -38,6 +69,8 @@ public class Site implements Serializable {
 		this.hauteurMax = hauteurMax;
 		this.longueurTotaleVoies = longueurTotaleVoies;
 		this.tag = tag;
+		this.topos = topos;
+		this.commentaires = commentaires;
 		this.niveauDePratique = niveauDePratique;
 		this.typeRoche = typeRoche;
 		this.cotation = cotation;
@@ -47,6 +80,12 @@ public class Site implements Serializable {
 		this.massif = massif;
 		this.carteIgn = carteIgn;
 		this.commune = commune;
+	}
+	public Long getNumSite() {
+		return numSite;
+	}
+	public void setNumSite(Long numSite) {
+		this.numSite = numSite;
 	}
 	public String getNomSite() {
 		return nomSite;
@@ -156,6 +195,8 @@ public class Site implements Serializable {
 	public void setCommune(Commune commune) {
 		this.commune = commune;
 	}
+	
+	
 
 	
 }

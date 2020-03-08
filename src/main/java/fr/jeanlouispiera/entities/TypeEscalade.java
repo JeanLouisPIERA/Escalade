@@ -3,16 +3,32 @@ package fr.jeanlouispiera.entities;
 import java.io.Serializable;
 import java.util.Collection;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+@Entity
 public class TypeEscalade implements Serializable {
+	private static final long serialVersionUID = 1L;
+	@Id @GeneratedValue
+	private Long codeTypeEscalade;
 	private String nomTypeEscalade;
+	@OneToMany(mappedBy="typeEscalade")
 	private Collection <Site> sites;
 	public TypeEscalade() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public TypeEscalade(String nomTypeEscalade) {
+	public TypeEscalade(Long codeTypeEscalade, String nomTypeEscalade) {
 		super();
+		this.codeTypeEscalade = codeTypeEscalade;
 		this.nomTypeEscalade = nomTypeEscalade;
+	}
+	public Long getCodeTypeEscalade() {
+		return codeTypeEscalade;
+	}
+	public void setCodeTypeEscalade(Long codeTypeEscalade) {
+		this.codeTypeEscalade = codeTypeEscalade;
 	}
 	public String getNomTypeEscalade() {
 		return nomTypeEscalade;
