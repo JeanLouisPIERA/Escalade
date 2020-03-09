@@ -3,13 +3,19 @@ package fr.jeanlouispiera.entities;
 import java.io.Serializable;
 import java.util.Collection;
 
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.OneToMany;
 @Entity
-public class Utilisateur implements Serializable {
+@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name="TYPE_USER", discriminatorType=DiscriminatorType.STRING, length=2)
+public abstract class Utilisateur implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id @GeneratedValue
 	private Long codeUtilisateur;

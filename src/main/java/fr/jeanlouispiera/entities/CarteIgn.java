@@ -12,7 +12,7 @@ public class CarteIgn implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id @GeneratedValue
 	private Long codeCarte;
-	private int numCarte;
+	private String numCarte;
 	private String nomCarte;
 	@OneToMany(mappedBy="carteIgn")
 	private Collection <Site> sites;
@@ -20,31 +20,27 @@ public class CarteIgn implements Serializable {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
-	public CarteIgn(Long codeCarte, int numCarte, String nomCarte, Collection<Site> sites) {
+	public CarteIgn(Long codeCarte, String numCarte, String nomCarte) {
 		super();
 		this.codeCarte = codeCarte;
 		this.numCarte = numCarte;
 		this.nomCarte = nomCarte;
-		this.sites = sites;
 	}
-	
-	public CarteIgn(int numCarte, String nomCarte) {
+	public CarteIgn(String numCarte, String nomCarte) {
 		super();
 		this.numCarte = numCarte;
 		this.nomCarte = nomCarte;
 	}
-
 	public Long getCodeCarte() {
 		return codeCarte;
 	}
 	public void setCodeCarte(Long codeCarte) {
 		this.codeCarte = codeCarte;
 	}
-	public int getNumCarte() {
+	public String getNumCarte() {
 		return numCarte;
 	}
-	public void setNumCarte(int numCarte) {
+	public void setNumCarte(String numCarte) {
 		this.numCarte = numCarte;
 	}
 	public String getNomCarte() {
