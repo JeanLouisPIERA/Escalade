@@ -26,12 +26,17 @@ public class Cotation implements Serializable {
 		this.refCotationMin = refCotationMin;
 		this.refCotationMax = refCotationMax;
 	}
-	
 	public Cotation(String refCotationMin, String refCotationMax) {
 		super();
 		this.refCotationMin = refCotationMin;
 		this.refCotationMax = refCotationMax;
 	}
+	public Cotation(Long codeCotation) {
+		super();
+		this.codeCotation = codeCotation;
+	}
+	
+	
 	public Long getCodeCotation() {
 		return codeCotation;
 	}

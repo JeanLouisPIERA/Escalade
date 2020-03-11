@@ -26,10 +26,21 @@ public class NiveauDePratique implements Serializable{
 		this.sites = sites;
 	}
 	
+	public NiveauDePratique(Long codeNiveauPratique, String nomNiveauPratique) {
+		super();
+		this.codeNiveauPratique = codeNiveauPratique;
+		this.nomNiveauPratique = nomNiveauPratique;
+	}
 	public NiveauDePratique(String nomNiveauPratique) {
 		super();
 		this.nomNiveauPratique = nomNiveauPratique;
 	}
+	public NiveauDePratique(Long codeNiveauPratique) {
+		super();
+		this.codeNiveauPratique = codeNiveauPratique;
+	}
+	
+	
 	public Long getCodeNiveauPratique() {
 		return codeNiveauPratique;
 	}

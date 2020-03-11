@@ -24,11 +24,12 @@ public class Massif implements Serializable {
 		this.codeMassif = codeMassif;
 		this.nomMassif = nomMassif;
 	}
-	
 	public Massif(String nomMassif) {
 		super();
 		this.nomMassif = nomMassif;
 	}
+	
+	
 	public Long getCodeMassif() {
 		return codeMassif;
 	}

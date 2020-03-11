@@ -31,6 +31,12 @@ public class CarteIgn implements Serializable {
 		this.numCarte = numCarte;
 		this.nomCarte = nomCarte;
 	}
+	public CarteIgn(Long codeCarte) {
+		super();
+		this.codeCarte = codeCarte;
+	}
+	
+	
 	public Long getCodeCarte() {
 		return codeCarte;
 	}

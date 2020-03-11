@@ -24,11 +24,16 @@ public class NiveauEscalade implements Serializable {
 		this.codeNiveauEscalade = codeNiveauEscalade;
 		this.nomNiveauEscalade = nomNiveauEscalade;
 	}
-	
 	public NiveauEscalade(String nomNiveauEscalade) {
 		super();
 		this.nomNiveauEscalade = nomNiveauEscalade;
 	}
+	public NiveauEscalade(Long codeNiveauEscalade) {
+		super();
+		this.codeNiveauEscalade = codeNiveauEscalade;
+	}
+	
+	
 	public Long getCodeNiveauEscalade() {
 		return codeNiveauEscalade;
 	}

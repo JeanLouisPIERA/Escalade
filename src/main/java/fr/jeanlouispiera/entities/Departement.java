@@ -30,12 +30,16 @@ public class Departement implements Serializable  {
 		this.nomDpt = nomDpt;
 		this.region = region;
 	}
-	
 	public Departement(String nomDpt, Region region) {
 		super();
 		this.nomDpt = nomDpt;
 		this.region = region;
 	}
+	public Departement(Long codeDpt) {
+		super();
+		this.codeDpt = codeDpt;
+	}
+	
 	public Long getCodeDpt() {
 		return codeDpt;
 	}

@@ -24,11 +24,16 @@ public class Pays implements Serializable{
 		this.codePays = codePays;
 		this.nomPays = nomPays;
 	}
-	
 	public Pays(String nomPays) {
 		super();
 		this.nomPays = nomPays;
 	}
+	public Pays(Long codePays) {
+		super();
+		this.codePays = codePays;
+	}
+	
+	
 	public Long getCodePays() {
 		return codePays;
 	}

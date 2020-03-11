@@ -31,12 +31,16 @@ public class Commune implements Serializable{
 		this.nomCommune = nomCommune;
 		this.departement = departement;
 	}
-	
 	public Commune(String nomCommune, Departement departement) {
 		super();
 		this.nomCommune = nomCommune;
 		this.departement = departement;
 	}
+	public Commune(Long codeCommune) {
+		super();
+		this.codeCommune = codeCommune;
+	}
+	
 	public Long getCodeCommune() {
 		return codeCommune;
 	}

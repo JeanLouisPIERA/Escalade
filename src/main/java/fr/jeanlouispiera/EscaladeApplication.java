@@ -36,12 +36,15 @@ import fr.jeanlouispiera.entities.Orientation;
 import fr.jeanlouispiera.entities.Pays;
 import fr.jeanlouispiera.entities.Region;
 import fr.jeanlouispiera.entities.Site;
+import fr.jeanlouispiera.entities.SiteFicheInfos;
+import fr.jeanlouispiera.entities.SiteFicheOfficielle;
 import fr.jeanlouispiera.entities.Topo;
 import fr.jeanlouispiera.entities.TypeEscalade;
 import fr.jeanlouispiera.entities.TypeRoche;
 import fr.jeanlouispiera.entities.Utilisateur;
 import fr.jeanlouispiera.entities.UtilisateurMembre;
 import fr.jeanlouispiera.entities.UtilisateurVisiteur;
+import fr.jeanlouispiera.metier.IEscaladeMetier;
 
 @SpringBootApplication
 public class EscaladeApplication implements CommandLineRunner{
@@ -77,6 +80,8 @@ public class EscaladeApplication implements CommandLineRunner{
 	private CommentaireRepository commentaireRepository;
 	@Autowired
 	private CarteIgnRepository carteIgnRepository;
+	@Autowired
+	private IEscaladeMetier escaladeMetier;
 	public static void main(String[] args) {
 		SpringApplication.run(EscaladeApplication.class, args);
 		/**ApplicationContext ctx=SpringApplication.run(EscaladeApplication.class, args);
@@ -109,15 +114,20 @@ public class EscaladeApplication implements CommandLineRunner{
 		Departement de2=departementRepository.save(new Departement("Ardèche 07", re1));
 		Commune com1=communeRepository.save(new Commune("L'argentière la Bessière", de1));
 		Commune com2=communeRepository.save(new Commune("Valgorge Saint Martin", de2));
-		Site si1=siteRepository.save(new Site("Ailefroide", 1500, 500, 4, 400, 8000, "Officiel Les Amis de l'escalade", np1, tr1, co1, ty1, ne1, or1, ma1, ca1, com1));
-		Site si2=siteRepository.save(new Site("Valgorge", 800, 60, 5, 5, 600, "", np2, tr1, co2, ty2, ne2, or1, ma2, ca2, com2));
+		Site si1=siteRepository.save(new SiteFicheInfos("Ailefroide", 1500, 500, 4, 400, 8000, np1, tr1, co1, ty1, ne1, or1, ma1, ca1, com1, "Jack", "jack@yahoo.fr"));
+		Site si2=siteRepository.save(new SiteFicheOfficielle("Valgorge", 800, 60, 5, 5, 600, np2, tr1, co2, ty2, ne2, or1, ma2, ca2, com2, "Amis Officiels de l'Escalade"));
 		Topo to1=topoRepository.save(new Topo("420 itinéraires", "Oisans sauvage Livre Est", "Jean-Michel Cambon","2011", 15, 30, "français", 250, "prêt en cours",u1,si1));
 		Topo to2=topoRepository.save(new Topo("Esacalade en Briançonnais", "Haute Vallée de la Durance et Queyras", "Yann, Martine et Jean-jacques Rolland","2012", 20, 20, "français", 130, "disponible",u1,si1));
 		Topo to3=topoRepository.save(new Topo("Valgorge", "site récent", "castelbloc@gmail.com","2010", 15, 30, "français", 250, "disponible",u1,si2));
 		Commentaire comm1=commentaireRepository.save(new Commentaire("Un site grandiose", new Date(), "J'en suis à ma 15ème rando dans ce massif et je le recommande à tous !",u1, to1,si1 ));
 		Commentaire comm2=commentaireRepository.save(new Commentaire("Attention propriété privée", new Date(), "Je signale à tout le monde que le site se trouve sur une propriété privée dans une chaitaigneraie. Interdit de dormir sur place, de faire du feu et de ramasser des chataignes !",u2, to3,si2 ));
-		}
 	
-
+		escaladeMetier.createUserM("Charles","charlot@yahoo.fr", "hgf56r");
+		escaladeMetier.updateUser((long) 31, "new_password_de_charlot");
+		escaladeMetier.deleteUser((long) 1);
+		escaladeMetier.createUserV("Charlemagne", "aixlachapelle@yahoo.fr", "gtpo87");
+	}
+	
+		
 }
 

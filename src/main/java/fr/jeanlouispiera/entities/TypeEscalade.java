@@ -24,11 +24,16 @@ public class TypeEscalade implements Serializable {
 		this.codeTypeEscalade = codeTypeEscalade;
 		this.nomTypeEscalade = nomTypeEscalade;
 	}
-	
 	public TypeEscalade(String nomTypeEscalade) {
 		super();
 		this.nomTypeEscalade = nomTypeEscalade;
 	}
+	public TypeEscalade(Long codeTypeEscalade) {
+		super();
+		this.codeTypeEscalade = codeTypeEscalade;
+	}
+	
+	
 	public Long getCodeTypeEscalade() {
 		return codeTypeEscalade;
 	}

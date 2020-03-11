@@ -37,13 +37,18 @@ public abstract class Utilisateur implements Serializable {
 		this.adresseMail = adresseMail;
 		this.passWord = passWord;
 	}
-	
 	public Utilisateur(String nomUtilisateur, String adresseMail, String passWord) {
 		super();
 		this.nomUtilisateur = nomUtilisateur;
 		this.adresseMail = adresseMail;
 		this.passWord = passWord;
 	}
+	public Utilisateur(Long codeUtilisateur) {
+		super();
+		this.codeUtilisateur = codeUtilisateur;
+	}
+	
+	
 	public Long getCodeUtilisateur() {
 		return codeUtilisateur;
 	}

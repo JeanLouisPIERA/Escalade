@@ -12,7 +12,7 @@ import javax.persistence.ManyToOne;
 public class Commentaire implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id @GeneratedValue
-	private Long num_Commentaire;
+	private Long numCommentaire;
 	private String titreCommentaire;
 	private Date dateCommentaire;
 	private String contenuCommentaire;
@@ -25,14 +25,15 @@ public class Commentaire implements Serializable {
 	@ManyToOne
 	@JoinColumn(name="SITE")
 	private Site site;
+	
 	public Commentaire() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Commentaire(Long num_Commentaire, String titreCommentaire, Date dateCommentaire, String contenuCommentaire,
+	public Commentaire(Long numCommentaire, String titreCommentaire, Date dateCommentaire, String contenuCommentaire,
 			Utilisateur utilisateur, Topo topo, Site site) {
 		super();
-		this.num_Commentaire = num_Commentaire;
+		this.numCommentaire = numCommentaire;
 		this.titreCommentaire = titreCommentaire;
 		this.dateCommentaire = dateCommentaire;
 		this.contenuCommentaire = contenuCommentaire;
@@ -51,11 +52,15 @@ public class Commentaire implements Serializable {
 		this.topo = topo;
 		this.site = site;
 	}
-	public Long getNum_Commentaire() {
-		return num_Commentaire;
+	public Commentaire(Long numCommentaire) {
+		super();
+		this.numCommentaire = numCommentaire;
 	}
-	public void setNum_Commentaire(Long num_Commentaire) {
-		this.num_Commentaire = num_Commentaire;
+	public Long getNumCommentaire() {
+		return numCommentaire;
+	}
+	public void setNumCommentaire(Long numCommentaire) {
+		this.numCommentaire = numCommentaire;
 	}
 	public String getTitreCommentaire() {
 		return titreCommentaire;
@@ -94,7 +99,5 @@ public class Commentaire implements Serializable {
 		this.site = site;
 	}
 	
-	
-
 	
 }
