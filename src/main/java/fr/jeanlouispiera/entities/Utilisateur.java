@@ -13,9 +13,7 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.OneToMany;
 @Entity
-@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name="TYPE_USER", discriminatorType=DiscriminatorType.STRING, length=2)
-public abstract class Utilisateur implements Serializable {
+public class Utilisateur implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id @GeneratedValue
 	private Long codeUtilisateur;
