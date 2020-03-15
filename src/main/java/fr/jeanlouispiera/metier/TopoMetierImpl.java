@@ -1,5 +1,9 @@
 package fr.jeanlouispiera.metier;
 
+import java.util.List;
+
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 //import org.springframework.data.domain.Page;
@@ -61,30 +65,89 @@ public class TopoMetierImpl implements ITopoMetier {
 		topoRepository.delete(readTopo(codeTopo));
 		
 	}
-/**
-	@Override
-	public Page<Topo> listTopo(Long codeTopo, int page, int size) {
-		return topoRepository.listTopo(codeTopo, PageRequest.of(page,size));
-	}
-**/
-	@Override
-	public void requestBooking(Long codeTopo) {
-		// TODO Auto-generated method stub
-		
-	}
+	
+	//********SELECTIONNER LES TOPOS A PARTIR D'UN ATTRIBUT COMMUN ******** 
+	
 
 	@Override
-	public void confirmBooking(Long CodeTopo) {
-		// TODO Auto-generated method stub
-		
+	public List<Topo> searchByNomTopo(String nomTopo) {
+		List<Topo> t = topoRepository.findByNomTopo(nomTopo);
+		return t;
 	}
 
+
 	@Override
-	public void endBooking(Long codeTopo) {
-		// TODO Auto-generated method stub
-		
+	public List<Topo> searchByEditeur(String editeur) {
+		List<Topo> t = topoRepository.findByEditeur(editeur);
+		return t;
+	}
+
+
+	@Override
+	public List<Topo> searchByDateParution(String dateParution) {
+		List<Topo> t = topoRepository.findByDateParution(dateParution);
+		return t;
 	}
 	
+	@Override
+	public List<Topo> searchByUtilisateur(Utilisateur utilisateur) {
+		List<Topo> t = topoRepository.findByUtilisateur(utilisateur);
+		return t;
+	}
+
+
+	@Override
+	public List<Topo> searchBySite(Site site) {
+		List<Topo> t = topoRepository.findBySite(site);
+		return t;
+
+	}
+
+	@Override
+	public List<Topo> searchByTopoStatut(TopoStatut topoStatut) {
+		List<Topo> t = topoRepository.findByTopoStatut(topoStatut);
+		return t;
+	}
+	
+	//*******AFFICHER ET SELECTIONNER LES TOPOS *****************
+	
+	@Override
+	public List<Topo> displayAllTopos() {
+		List<Topo> t = topoRepository.findAll();
+		return t;
+	}
+	
+	
+	//*******GERER LE PRET D'UN TOPO*******************
+	
+	@Override
+	public Topo changerTopoStatut(Long codeTopo, TopoStatut TopoStatut1, TopoStatut TopoStatut2) {
+		Topo t=readTopo(codeTopo);
+		if(t.getTopoStatut().equals(TopoStatut1)){
+			t.setTopoStatut(TopoStatut2);
+	}
+		return t;
+	}
+	
+	@Override
+	public Topo requestBooking(Long codeTopo) {
+		return changerTopoStatut(codeTopo, TopoStatut.DIS, TopoStatut.DEM);
+	}
+
+	@Override
+	public Topo confirmBooking(Long codeTopo) {
+		return changerTopoStatut(codeTopo, TopoStatut.DEM, TopoStatut.PEC);
+		
+	}
+
+	@Override
+	public Topo endBooking(Long codeTopo) {
+		return changerTopoStatut(codeTopo, TopoStatut.PEC, TopoStatut.DIS);
+	}
+
+
+	
+
 	
 
 }

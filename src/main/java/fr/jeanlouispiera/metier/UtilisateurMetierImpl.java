@@ -24,8 +24,13 @@ public class UtilisateurMetierImpl implements IUtilisateurMetier {
 
 	@Override
 	public Utilisateur readUser(Long codeUtilisateur) {
-		Utilisateur u=utilisateurRepository.findById(codeUtilisateur).orElse(null);
-		if(u==null) throw new RuntimeException("Espace utilisateur introuvable");
+		Utilisateur u = new Utilisateur();
+		try {
+			u = utilisateurRepository.findById(codeUtilisateur).orElse(null);
+		} catch (RuntimeException e) {
+			e.printStackTrace();
+		}
+		//if(u==null) throw new RuntimeException("Espace utilisateur introuvable");
 		return u;
 	}
 
@@ -38,41 +43,12 @@ public class UtilisateurMetierImpl implements IUtilisateurMetier {
 
 	@Override
 	public void deleteUser(Long codeUtilisateur) {
+		Utilisateur u = readUser(codeUtilisateur);
 		utilisateurRepository.delete(readUser(codeUtilisateur));
 		
-	}
-	
-	/**
-	 @Override
-	public void createUserM(String nomUtilisateur, String adresseMail, String passWord) {
-		utilisateurRepository.save(new UtilisateurMembre(nomUtilisateur, adresseMail, passWord));
-	}
 
-	@Override
-	public void createUserV(String nomUtilisateur, String adresseMail, String passWord) {
-		utilisateurRepository.save(new UtilisateurVisiteur(nomUtilisateur, adresseMail, passWord));
 	}
 	
-	@Override
-	public Utilisateur readUser(Long codeUtilisateur) {
-		Utilisateur u=utilisateurRepository.findById(codeUtilisateur).orElse(null);
-		if(u==null) throw new RuntimeException("Espace utilisateur introuvable");
-		return u;
-	}
-
-	@Override
-	public void updateUser(Long codeUtilisateur, String passWord) {
-		//Utilisateur u=readUser(codeUtilisateur);
-		//u.setPassWord(passWord);
-		readUser(codeUtilisateur).setPassWord(passWord);
-	}
-	
-	@Override
-	public void deleteUser(Long codeUtilisateur) {
-		//Utilisateur u = readUser(codeUtilisateur);
-		utilisateurRepository.delete(readUser(codeUtilisateur));
-	}
-	 */
-	
+		
 
 }

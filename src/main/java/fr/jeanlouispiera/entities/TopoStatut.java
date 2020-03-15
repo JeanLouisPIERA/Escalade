@@ -2,11 +2,9 @@ package fr.jeanlouispiera.entities;
 
 public enum TopoStatut {
 	
+	DIS ("DISPONIBLE"),
 	DEM ("DEMANDE EN COURS"),
-	PEC ("PRET EN COURS"),
-	DIS ("DISPONIBLE");
-	
-	
+	PEC ("PRET EN COURS");
 	
     
     private String inWords ;  

@@ -38,6 +38,16 @@ public class Topo implements Serializable {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+	
+
+
+	public Topo(Long codeTopo) {
+		super();
+		this.codeTopo = codeTopo;
+	}
+
+
 
 
 	public Topo(Long codeTopo, String nomTopo, String descriptionTopo, String editeur, String dateParution, int largeur,

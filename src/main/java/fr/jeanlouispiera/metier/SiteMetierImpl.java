@@ -1,5 +1,7 @@
 package fr.jeanlouispiera.metier;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Service;
@@ -40,6 +42,7 @@ public class SiteMetierImpl implements ISiteMetier{
 		if(s==null) throw new RuntimeException("Espace utilisateur introuvable");
 		return s;
 	}
+	
 
 	@Override
 	public Site updateSite(Long numSite, String nomSite, int altitude, int nbVoies, int hauteurMin, int hauteurMax,
@@ -60,10 +63,9 @@ public class SiteMetierImpl implements ISiteMetier{
 		
 	}
 	
+	
 	@Override
-	public Site updateSiteTag(Long numSite, String nomSite, int altitude, int nbVoies, int hauteurMin, int hauteurMax,
-			int longueurTotaleVoies, SiteNiveauDePratique siteNiveauDePratique, SiteCotation siteCotation,
-			SiteOrientation siteOrientation, SiteRegion siteRegion, SiteTypeRoche siteTypeRoche, SiteTag siteTag) {
+	public Site createSiteTag(Long numSite,  SiteTag siteTag) {
 		Site s=readSite(numSite);
 		s.setSiteTag(siteTag);
 		return s;
@@ -74,7 +76,95 @@ public class SiteMetierImpl implements ISiteMetier{
 		siteRepository.delete(readSite(numSite));
 		
 	}
+	
+	//********SELECTIONNER LES SITES A PARTIR D'UN ATTRIBUT COMMUN ******** 
 
+
+	@Override
+	public List<Site> searchByNomSite(String nomSite) {
+		List<Site> s = siteRepository.findByNomSite(nomSite);
+		return s;
+	}
+
+	@Override
+	public List<Site> searchByAltitude(int altitude) {
+		List<Site> s = siteRepository.findByAltitude(altitude);
+		return s;
+	}
+
+	@Override
+	public List<Site> searchByNbVoies(int nbVoies) {
+		List<Site> s = siteRepository.findByNbVoies(nbVoies);
+		return s;
+	}
+
+	@Override
+	public List<Site> searchByHauteurMin(int hauteurMin) {
+		List<Site> s = siteRepository.findByHauteurMin(hauteurMin);
+		return s;
+	}
+
+	@Override
+	public List<Site> searchByHauteurMax(int hauteurMax) {
+		List<Site> s = siteRepository.findByHauteurMax(hauteurMax);
+		return s;
+	}
+	
+	@Override
+	public List<Site> searchByHauteurlongueurTotalesVoies(int longueurTotaleVoies) {
+		List<Site> s = siteRepository.findByLongueurTotaleVoies(longueurTotaleVoies);
+		return s;
+	}
+
+	@Override
+	public List<Site> searchBySiteNiveauDePratique(SiteNiveauDePratique siteNiveauDePratique) {
+		List<Site> s = siteRepository.findBySiteNiveauDePratique(siteNiveauDePratique);
+		return s;
+	}
+
+	@Override
+	public List<Site> searchBySiteCotation(SiteCotation siteCotation) {
+		List<Site> s = siteRepository.findBySiteCotation(siteCotation);
+		return s;
+	}
+
+	@Override
+	public List<Site> searchBySiteOrientation(SiteOrientation siteOrientation) {
+		List<Site> s = siteRepository.findBySiteOrientation(siteOrientation);
+		return s;
+	}
+
+	@Override
+	public List<Site> searchBySiteRegion(SiteRegion siteRegion) {
+		List<Site> s = siteRepository.findBySiteRegion(siteRegion);
+		return s;
+	}
+
+	@Override
+	public List<Site> searchBySiteTypeRoche(SiteTypeRoche siteTypeRoche) {
+		List<Site> s = siteRepository.findBySiteTypeRoche(siteTypeRoche);
+		return s;
+	}
+
+	@Override
+	public List<Site> searchBySiteTag(SiteTag siteTag) {
+		List<Site> s = siteRepository.findBySiteTag(siteTag);
+		return s;
+	}
+	
+		
+	//*******AFFICHER ET SELECTIONNER LES SITES *****************
+		
+
+	@Override
+	public List<Site> displayAllSites() {
+		List<Site> s = siteRepository.findAll();
+		return s;
+	}
+
+	
+
+	
 
 	
 	
