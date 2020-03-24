@@ -1,13 +1,14 @@
 package fr.jeanlouispiera;
 
-import java.util.Date;
-
-
 import org.springframework.beans.factory.annotation.Autowired;
+
+
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
 
+import fr.jeanlouispiera.controllers.SiteController;
 import fr.jeanlouispiera.entities.Site;
 import fr.jeanlouispiera.entities.SiteCotation;
 import fr.jeanlouispiera.entities.SiteNiveauDePratique;
@@ -15,7 +16,6 @@ import fr.jeanlouispiera.entities.SiteOrientation;
 import fr.jeanlouispiera.entities.SiteRegion;
 import fr.jeanlouispiera.entities.SiteTag;
 import fr.jeanlouispiera.entities.SiteTypeRoche;
-import fr.jeanlouispiera.entities.Topo;
 import fr.jeanlouispiera.entities.TopoStatut;
 import fr.jeanlouispiera.entities.Utilisateur;
 import fr.jeanlouispiera.metier.ISiteMetier;
@@ -25,7 +25,7 @@ import fr.jeanlouispiera.metier.IUtilisateurMetier;
 
 
 @SpringBootApplication
-public class EscaladeApplication implements CommandLineRunner{
+public class EscaladeApplication implements CommandLineRunner {
 	
 	@Autowired
 	private IUtilisateurMetier utilisateurMetier;
@@ -33,10 +33,12 @@ public class EscaladeApplication implements CommandLineRunner{
 	private ITopoMetier topoMetier;
 	@Autowired
 	private ISiteMetier siteMetier;
-	public static void main(String[] args) {
+		
+	public static void main(String[] args) throws Exception{
 		SpringApplication.run(EscaladeApplication.class, args);
 	}
 
+	
 	@Override
 	public void run(String... args) throws Exception {
 		Utilisateur u1 = utilisateurMetier.createUser("Jean", "jeannot@gmail.com", "jj56p");
@@ -51,11 +53,14 @@ public class EscaladeApplication implements CommandLineRunner{
 		topoMetier.createTopo("Esacalade en Briançonnais", "Haute Vallée de la Durance et Queyras", "Yann, Martine et Jean-jacques Rolland","2012", 20, 20, "français", 130, TopoStatut.DEM, u4, s1);
 		topoMetier.createTopo("Valgorge", "site récent", "castelbloc@gmail.com","2010", 15, 30, "français", 250, TopoStatut.PEC, u2, s2);
 		
+		
 		//topoMetier.searchByNomTopo("420 itinéraires");
 	    //topoMetier.requestBooking((long) 7);
 		//topoMetier.confirmBooking((long) 8);
 		//topoMetier.endBooking((long) 9);
 	    }
+	
+	
 	    
 }
 

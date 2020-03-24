@@ -1,6 +1,8 @@
 package fr.jeanlouispiera.entities;
 
 import java.io.Serializable;
+
+
 import java.util.Collection;
 
 import javax.persistence.Entity;
@@ -8,8 +10,10 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="site")
 public class Site implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id @GeneratedValue

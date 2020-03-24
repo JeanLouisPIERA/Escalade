@@ -1,5 +1,7 @@
 package fr.jeanlouispiera.metier;
 
+import java.util.List;
+
 import fr.jeanlouispiera.entities.Utilisateur;
 
 public interface IUtilisateurMetier {
@@ -22,4 +24,8 @@ public interface IUtilisateurMetier {
 		//1-4 DELETE DE SON ESPACE PERSONNEL ******* [PAR L'UTILISATEUR MEMBRE OU VISITEUR]
 			public void deleteUser(Long codeUtilisateur);
 	
+		//*******AFFICHER ET SELECTIONNER LES UTILISATEURS *****************
+		
+		public List<Utilisateur> displayAllUsers();
+			
 }

@@ -36,7 +36,7 @@ public class TopoMetierImpl implements ITopoMetier {
 
 	@Override
 	public Topo readTopo(Long codeTopo) {
-		Topo t=topoRepository.findById(codeTopo).orElse(null);
+		Topo t=topoRepository.findById(codeTopo).get();
 		if(t==null) throw new RuntimeException("Espace utilisateur introuvable");
 		return t;
 	}

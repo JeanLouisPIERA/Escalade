@@ -38,7 +38,7 @@ public class SiteMetierImpl implements ISiteMetier{
 
 	@Override
 	public Site readSite(Long numSite) {
-		Site s = siteRepository.findById(numSite).orElse(null);
+		Site s = siteRepository.findById(numSite).get();
 		if(s==null) throw new RuntimeException("Espace utilisateur introuvable");
 		return s;
 	}
