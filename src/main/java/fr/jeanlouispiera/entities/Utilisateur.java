@@ -3,14 +3,10 @@ package fr.jeanlouispiera.entities;
 import java.io.Serializable;
 import java.util.Collection;
 
-import javax.persistence.DiscriminatorColumn;
-import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
 import javax.persistence.OneToMany;
 @Entity
 public class Utilisateur implements Serializable {
@@ -26,7 +22,6 @@ public class Utilisateur implements Serializable {
 	private Collection<Commentaire> commentaires;
 	public Utilisateur() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	public Utilisateur(Long codeUtilisateur, String nomUtilisateur, String adresseMail, String passWord) {
 		super();

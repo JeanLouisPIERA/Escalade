@@ -2,6 +2,7 @@ package fr.jeanlouispiera.metier;
 
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Service;
@@ -24,6 +25,9 @@ public class SiteMetierImpl implements ISiteMetier{
 	@Autowired
 	private SiteRepository siteRepository; 
 
+	
+	
+	
 	@Override
 	public Site createSite(String nomSite, int altitude, int nbVoies, int hauteurMin, int hauteurMax,
 			int longueurTotaleVoies, SiteNiveauDePratique siteNiveauDePratique, SiteCotation siteCotation,
@@ -72,7 +76,7 @@ public class SiteMetierImpl implements ISiteMetier{
 	}
 
 	@Override
-	public void deleteUser(Long numSite) {
+	public void deleteSite(Long numSite) {
 		siteRepository.delete(readSite(numSite));
 		
 	}
@@ -161,6 +165,8 @@ public class SiteMetierImpl implements ISiteMetier{
 		List<Site> s = siteRepository.findAll();
 		return s;
 	}
+
+	
 
 	
 

@@ -11,6 +11,7 @@ import fr.jeanlouispiera.entities.SiteRegion;
 import fr.jeanlouispiera.entities.SiteTag;
 import fr.jeanlouispiera.entities.SiteTypeRoche;
 
+
 public interface ISiteMetier {
 	
 /**
@@ -18,6 +19,7 @@ public interface ISiteMetier {
 **/
 
 //1 CRUD SITE
+	
 	
 	//1-1 CREATE SITE  
 	public Site createSite (String nomSite, int altitude, int nbVoies, int hauteurMin, int hauteurMax,
@@ -37,8 +39,11 @@ public interface ISiteMetier {
 			public Site createSiteTag (Long numSite, SiteTag siteTag);
 		
 	//1-4 DELETE DE SON ESPACE PERSONNEL ******* [PAR L'UTILISATEUR MEMBRE OU VISITEUR]
-		public void deleteUser (Long numSite);
+		public void deleteSite (Long numSite);
 
+	
+		
+		
 //2 SELECTIONNER TOUS LES SITES EXISTANTS A PARTIR D'UNE VALEUR D'ATTRIBUTE EN COMMUN ******** [PAR UN VISITEUR] OU [PAR UN MEMBRE]
    public List<Site> searchByNomSite(String nomSite);
    public List<Site> searchByAltitude(int altitude);
@@ -56,7 +61,7 @@ public interface ISiteMetier {
 	//2-1 AFFICHER TOUS LES SITES
 		   public List<Site> displayAllSites();
 
-
+   
 
 }
 

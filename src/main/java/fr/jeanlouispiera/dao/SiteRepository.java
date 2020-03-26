@@ -1,7 +1,6 @@
 package fr.jeanlouispiera.dao;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -17,7 +16,6 @@ import fr.jeanlouispiera.entities.SiteTypeRoche;
 public interface SiteRepository extends JpaRepository<Site, Long>{
 
 	   @Query
-	   //Optional<Site> findById(Long numsite);
 	   List<Site> findByNomSite(String nomSite);
 	   List<Site> findByAltitude(int altitude);
 	   List<Site> findByNbVoies(int nbVoies);

@@ -1,17 +1,11 @@
 package fr.jeanlouispiera.dao;
 
 import java.util.List;
-import java.util.Optional;
 
-//import org.springframework.data.domain.Page;
-//import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import fr.jeanlouispiera.entities.Site;
-
-//import org.springframework.data.jpa.repository.Query;
-//import org.springframework.data.repository.query.Param;
 
 import fr.jeanlouispiera.entities.Topo;
 import fr.jeanlouispiera.entities.TopoStatut;
@@ -21,7 +15,6 @@ public interface TopoRepository extends JpaRepository<Topo, Long>{
 	
 	
 	@Query
-	//Optional<Topo> findById(Long codeTopo);
 	List<Topo> findByNomTopo(String nomTopo);
 	List<Topo> findByEditeur(String editeur);
 	List<Topo> findByDateParution(String dateParution);
