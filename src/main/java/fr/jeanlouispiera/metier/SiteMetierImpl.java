@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import fr.jeanlouispiera.dao.SiteRepository;
+import fr.jeanlouispiera.dao.ISiteRepository;
 import fr.jeanlouispiera.entities.Site;
 import fr.jeanlouispiera.entities.SiteCotation;
 import fr.jeanlouispiera.entities.SiteNiveauDePratique;
@@ -23,9 +23,13 @@ import fr.jeanlouispiera.entities.SiteTypeRoche;
 @Transactional
 public class SiteMetierImpl implements ISiteMetier{
 	@Autowired
-	private SiteRepository siteRepository; 
+	private ISiteRepository iSiteRepository; 
 
 	
+	@Override
+	public Site addSite(Site site) {
+		return iSiteRepository.save(site);
+	}
 	
 	
 	@Override
@@ -35,19 +39,28 @@ public class SiteMetierImpl implements ISiteMetier{
 		Site s = new Site (nomSite, altitude, nbVoies, hauteurMin, hauteurMax,
 				longueurTotaleVoies, siteNiveauDePratique, siteCotation,
 				siteOrientation, siteRegion, siteTypeRoche, siteTag);
-				siteRepository.save(s);
+				iSiteRepository.save(s);
 		return s;
 		
 	}
+	
+	
 
 	@Override
 	public Site readSite(Long numSite) {
-		Site s = siteRepository.findById(numSite).get();
+		Site s = iSiteRepository.findById(numSite).get();
 		if(s==null) throw new RuntimeException("Espace utilisateur introuvable");
 		return s;
 	}
 	
-
+	@Override
+	public Site update(Long numSite) {
+		Site site= readSite(numSite);
+		return this.addSite(site);
+	}
+	
+	
+	/**
 	@Override
 	public Site updateSite(Long numSite, String nomSite, int altitude, int nbVoies, int hauteurMin, int hauteurMax,
 			int longueurTotaleVoies, SiteNiveauDePratique siteNiveauDePratique, SiteCotation siteCotation,
@@ -65,7 +78,7 @@ public class SiteMetierImpl implements ISiteMetier{
 		s.setSiteTypeRoche(siteTypeRoche);
 		return s;
 		
-	}
+	}**/
 	
 	
 	@Override
@@ -77,7 +90,7 @@ public class SiteMetierImpl implements ISiteMetier{
 
 	@Override
 	public void deleteSite(Long numSite) {
-		siteRepository.delete(readSite(numSite));
+		iSiteRepository.deleteById(numSite);
 		
 	}
 	
@@ -86,73 +99,73 @@ public class SiteMetierImpl implements ISiteMetier{
 
 	@Override
 	public List<Site> searchByNomSite(String nomSite) {
-		List<Site> s = siteRepository.findByNomSite(nomSite);
+		List<Site> s = iSiteRepository.findByNomSite(nomSite);
 		return s;
 	}
 
 	@Override
 	public List<Site> searchByAltitude(int altitude) {
-		List<Site> s = siteRepository.findByAltitude(altitude);
+		List<Site> s = iSiteRepository.findByAltitude(altitude);
 		return s;
 	}
 
 	@Override
 	public List<Site> searchByNbVoies(int nbVoies) {
-		List<Site> s = siteRepository.findByNbVoies(nbVoies);
+		List<Site> s = iSiteRepository.findByNbVoies(nbVoies);
 		return s;
 	}
 
 	@Override
 	public List<Site> searchByHauteurMin(int hauteurMin) {
-		List<Site> s = siteRepository.findByHauteurMin(hauteurMin);
+		List<Site> s = iSiteRepository.findByHauteurMin(hauteurMin);
 		return s;
 	}
 
 	@Override
 	public List<Site> searchByHauteurMax(int hauteurMax) {
-		List<Site> s = siteRepository.findByHauteurMax(hauteurMax);
+		List<Site> s = iSiteRepository.findByHauteurMax(hauteurMax);
 		return s;
 	}
 	
 	@Override
 	public List<Site> searchByHauteurlongueurTotalesVoies(int longueurTotaleVoies) {
-		List<Site> s = siteRepository.findByLongueurTotaleVoies(longueurTotaleVoies);
+		List<Site> s = iSiteRepository.findByLongueurTotaleVoies(longueurTotaleVoies);
 		return s;
 	}
 
 	@Override
 	public List<Site> searchBySiteNiveauDePratique(SiteNiveauDePratique siteNiveauDePratique) {
-		List<Site> s = siteRepository.findBySiteNiveauDePratique(siteNiveauDePratique);
+		List<Site> s = iSiteRepository.findBySiteNiveauDePratique(siteNiveauDePratique);
 		return s;
 	}
 
 	@Override
 	public List<Site> searchBySiteCotation(SiteCotation siteCotation) {
-		List<Site> s = siteRepository.findBySiteCotation(siteCotation);
+		List<Site> s = iSiteRepository.findBySiteCotation(siteCotation);
 		return s;
 	}
 
 	@Override
 	public List<Site> searchBySiteOrientation(SiteOrientation siteOrientation) {
-		List<Site> s = siteRepository.findBySiteOrientation(siteOrientation);
+		List<Site> s = iSiteRepository.findBySiteOrientation(siteOrientation);
 		return s;
 	}
 
 	@Override
 	public List<Site> searchBySiteRegion(SiteRegion siteRegion) {
-		List<Site> s = siteRepository.findBySiteRegion(siteRegion);
+		List<Site> s = iSiteRepository.findBySiteRegion(siteRegion);
 		return s;
 	}
 
 	@Override
 	public List<Site> searchBySiteTypeRoche(SiteTypeRoche siteTypeRoche) {
-		List<Site> s = siteRepository.findBySiteTypeRoche(siteTypeRoche);
+		List<Site> s = iSiteRepository.findBySiteTypeRoche(siteTypeRoche);
 		return s;
 	}
 
 	@Override
 	public List<Site> searchBySiteTag(SiteTag siteTag) {
-		List<Site> s = siteRepository.findBySiteTag(siteTag);
+		List<Site> s = iSiteRepository.findBySiteTag(siteTag);
 		return s;
 	}
 	
@@ -162,7 +175,7 @@ public class SiteMetierImpl implements ISiteMetier{
 
 	@Override
 	public List<Site> displayAllSites() {
-		List<Site> s = siteRepository.findAll();
+		List<Site> s = iSiteRepository.findAll();
 		return s;
 	}
 

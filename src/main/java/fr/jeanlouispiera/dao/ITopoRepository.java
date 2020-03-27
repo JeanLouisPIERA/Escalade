@@ -11,7 +11,7 @@ import fr.jeanlouispiera.entities.Topo;
 import fr.jeanlouispiera.entities.TopoStatut;
 import fr.jeanlouispiera.entities.Utilisateur;
 
-public interface TopoRepository extends JpaRepository<Topo, Long>{
+public interface ITopoRepository extends JpaRepository<Topo, Long>{
 	
 	
 	@Query

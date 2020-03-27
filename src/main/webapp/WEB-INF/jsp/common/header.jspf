@@ -5,6 +5,7 @@
 <html lang="en">
 <head>
 <meta charset="ISO-8859-1">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link rel="stylesheet" type="text/css"
  href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
 <c:url value="/css/main.css" var="jstlCss" />

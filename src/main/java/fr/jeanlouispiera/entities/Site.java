@@ -39,6 +39,15 @@ public class Site implements Serializable {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+	
+
+	public Site(Long numSite) {
+		super();
+		this.numSite = numSite;
+	}
+
+
 
 	public Site(Long numSite, String nomSite, int altitude, int nbVoies, int hauteurMin, int hauteurMax,
 			int longueurTotaleVoies, SiteNiveauDePratique siteNiveauDePratique, SiteCotation siteCotation,

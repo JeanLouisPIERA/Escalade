@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import fr.jeanlouispiera.dao.TopoRepository;
+import fr.jeanlouispiera.dao.ITopoRepository;
 import fr.jeanlouispiera.entities.Site;
 import fr.jeanlouispiera.entities.Topo;
 import fr.jeanlouispiera.entities.TopoStatut;
@@ -17,21 +17,21 @@ import fr.jeanlouispiera.entities.Utilisateur;
 @Transactional
 public class TopoMetierImpl implements ITopoMetier {
 	@Autowired
-	private TopoRepository topoRepository;
+	private ITopoRepository iTopoRepository;
 
 	@Override
 	public Topo createTopo(String nomTopo, String descriptionTopo, String editeur, String dateParution, int largeur, int longueur,
 			String langue, int nbPages, TopoStatut topoStatut, Utilisateur utilisateur, Site site) {
 		Topo t = new Topo(nomTopo, descriptionTopo, editeur, dateParution, largeur, longueur,
 				langue, nbPages, topoStatut, utilisateur, site);
-		topoRepository.save(t);
+		iTopoRepository.save(t);
 		return t;
 	}
 	
 
 	@Override
 	public Topo readTopo(Long codeTopo) {
-		Topo t=topoRepository.findById(codeTopo).get();
+		Topo t=iTopoRepository.findById(codeTopo).get();
 		if(t==null) throw new RuntimeException("Espace utilisateur introuvable");
 		return t;
 	}
@@ -57,7 +57,7 @@ public class TopoMetierImpl implements ITopoMetier {
 
 	@Override
 	public void deleteTopo(Long codeTopo) {
-		topoRepository.delete(readTopo(codeTopo));
+		iTopoRepository.delete(readTopo(codeTopo));
 		
 	}
 	
@@ -66,41 +66,41 @@ public class TopoMetierImpl implements ITopoMetier {
 
 	@Override
 	public List<Topo> searchByNomTopo(String nomTopo) {
-		List<Topo> t = topoRepository.findByNomTopo(nomTopo);
+		List<Topo> t = iTopoRepository.findByNomTopo(nomTopo);
 		return t;
 	}
 
 
 	@Override
 	public List<Topo> searchByEditeur(String editeur) {
-		List<Topo> t = topoRepository.findByEditeur(editeur);
+		List<Topo> t = iTopoRepository.findByEditeur(editeur);
 		return t;
 	}
 
 
 	@Override
 	public List<Topo> searchByDateParution(String dateParution) {
-		List<Topo> t = topoRepository.findByDateParution(dateParution);
+		List<Topo> t = iTopoRepository.findByDateParution(dateParution);
 		return t;
 	}
 	
 	@Override
 	public List<Topo> searchByUtilisateur(Utilisateur utilisateur) {
-		List<Topo> t = topoRepository.findByUtilisateur(utilisateur);
+		List<Topo> t = iTopoRepository.findByUtilisateur(utilisateur);
 		return t;
 	}
 
 
 	@Override
 	public List<Topo> searchBySite(Site site) {
-		List<Topo> t = topoRepository.findBySite(site);
+		List<Topo> t = iTopoRepository.findBySite(site);
 		return t;
 
 	}
 
 	@Override
 	public List<Topo> searchByTopoStatut(TopoStatut topoStatut) {
-		List<Topo> t = topoRepository.findByTopoStatut(topoStatut);
+		List<Topo> t = iTopoRepository.findByTopoStatut(topoStatut);
 		return t;
 	}
 	
@@ -108,7 +108,7 @@ public class TopoMetierImpl implements ITopoMetier {
 	
 	@Override
 	public List<Topo> displayAllTopos() {
-		List<Topo> t = topoRepository.findAll();
+		List<Topo> t = iTopoRepository.findAll();
 		return t;
 	}
 	

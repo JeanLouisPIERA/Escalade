@@ -3,15 +3,20 @@
 <!DOCTYPE html>
 <%@ include file="common/header.jspf"%>
 <%@ include file="common/navigation.jspf"%>
- <div class="container">
-  <header>
-   <h1>Informations sur les Sites</h1>
-  </header>
-  <div class="starter-template">
+ <!--<div class="container">-->
+ <div class="wrapper">
+    <div class="container-fluid"></div>
+  <a type="button" class="btn btn-primary btn-md" href="/NewSite">Ajouter un nouveau Site</a>
+ </div>
+ <br>
+  <div class="panel panel-primary">
+  <div class="panel-heading">
+   <h3>Informations sur les sites</h3>
+  </div>
+  <div class="panel-body">
    <table
     class="table table-striped table-hover table-condensed table-bordered">
     <tr>
-   	  <th>Numéro</th>
       <th>Nom</th>
       <th>Altitude</th>
       <th>NbVoies</th>
@@ -27,7 +32,6 @@
     </tr>
     <c:forEach var="site" items="${sites}">
      <tr>
-     	  <td>${site.numSite}</td>
           <td>${site.nomSite}</td>
           <td>${site.altitude}</td>
           <td>${site.nbVoies}</td>
@@ -47,7 +51,6 @@
     </c:forEach>
    </table>
   </div>
-
  </div>
 
  <script type="text/javascript"

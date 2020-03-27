@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
 
 import fr.jeanlouispiera.entities.Site;
 import fr.jeanlouispiera.entities.SiteCotation;
@@ -13,7 +14,8 @@ import fr.jeanlouispiera.entities.SiteRegion;
 import fr.jeanlouispiera.entities.SiteTag;
 import fr.jeanlouispiera.entities.SiteTypeRoche;
 
-public interface SiteRepository extends JpaRepository<Site, Long>{
+@Repository
+public interface ISiteRepository extends JpaRepository<Site, Long>{
 
 	   @Query
 	   List<Site> findByNomSite(String nomSite);
@@ -28,8 +30,10 @@ public interface SiteRepository extends JpaRepository<Site, Long>{
 	   List<Site> findBySiteRegion(SiteRegion siteRegion);
 	   List<Site> findBySiteTypeRoche(SiteTypeRoche siteTypeRoche);
 	   List<Site> findBySiteTag(SiteTag siteTag);
-
-
+	
+	   
+	  
+	   
 	
 	
 }

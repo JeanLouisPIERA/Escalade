@@ -9,18 +9,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import fr.jeanlouispiera.dao.UtilisateurRepository;
+import fr.jeanlouispiera.dao.IUtilisateurRepository;
 import fr.jeanlouispiera.entities.Utilisateur;
 @Service
 @Transactional
 public class UtilisateurMetierImpl implements IUtilisateurMetier {
 	@Autowired
-	private UtilisateurRepository utilisateurRepository;
+	private IUtilisateurRepository iUtilisateurRepository;
 
 	@Override
 	public Utilisateur createUser(String nomUtilisateur, String adresseMail, String passWord) {
 		Utilisateur u = new Utilisateur(nomUtilisateur, adresseMail, passWord);
-		utilisateurRepository.save(u);
+		iUtilisateurRepository.save(u);
 		return u;
 	}
 
@@ -28,7 +28,7 @@ public class UtilisateurMetierImpl implements IUtilisateurMetier {
 	public Utilisateur readUser(Long codeUtilisateur) {
 		Utilisateur u = new Utilisateur();
 		try {
-			u = utilisateurRepository.findById(codeUtilisateur).get();
+			u = iUtilisateurRepository.findById(codeUtilisateur).get();
 		} catch (RuntimeException e) {
 			e.printStackTrace();
 		}
@@ -45,7 +45,7 @@ public class UtilisateurMetierImpl implements IUtilisateurMetier {
 
 	@Override
 	public void deleteUser(Long codeUtilisateur) {
-		utilisateurRepository.delete(readUser(codeUtilisateur));
+		iUtilisateurRepository.delete(readUser(codeUtilisateur));
 		
 
 	}
@@ -54,7 +54,7 @@ public class UtilisateurMetierImpl implements IUtilisateurMetier {
 	
 		@Override
 		public List<Utilisateur> displayAllUsers() {
-			List<Utilisateur> u = utilisateurRepository.findAll();
+			List<Utilisateur> u = iUtilisateurRepository.findAll();
 			return u;
 		}	
 

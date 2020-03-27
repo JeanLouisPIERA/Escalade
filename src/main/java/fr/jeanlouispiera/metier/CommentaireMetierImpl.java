@@ -7,7 +7,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import fr.jeanlouispiera.dao.CommentaireRepository;
+import fr.jeanlouispiera.dao.ICommentaireRepository;
 import fr.jeanlouispiera.entities.Commentaire;
 import fr.jeanlouispiera.entities.Site;
 import fr.jeanlouispiera.entities.Topo;
@@ -17,20 +17,20 @@ import fr.jeanlouispiera.entities.Utilisateur;
 @Transactional
 public class CommentaireMetierImpl implements ICommentaireMetier  {
 @Autowired
-private CommentaireRepository commentaireRepository;	
+private ICommentaireRepository iCommentaireRepository;	
 	
 	@Override
 	public Commentaire createComment(String titreCommentaire, Date dateCommentaire, String contenuCommentaire,
 			Utilisateur utilisateur, Topo topo, Site site) {
 		Commentaire c = new Commentaire(titreCommentaire, dateCommentaire, contenuCommentaire,
 				utilisateur, topo, site);
-		commentaireRepository.save(c);
+		iCommentaireRepository.save(c);
 		return c;
 	}
 
 	@Override
 	public Commentaire readComment(Long numCommentaire) {
-		Commentaire c = commentaireRepository.findById(numCommentaire).orElse(null);
+		Commentaire c = iCommentaireRepository.findById(numCommentaire).orElse(null);
 		if(c==null) throw new RuntimeException("Espace utilisateur introuvable");
 		return c;
 		
@@ -52,7 +52,7 @@ private CommentaireRepository commentaireRepository;
 
 	@Override
 	public void deleteComment(Long numCommentaire) {
-		commentaireRepository.delete(readComment(numCommentaire));
+		iCommentaireRepository.delete(readComment(numCommentaire));
 	}
 	
 }

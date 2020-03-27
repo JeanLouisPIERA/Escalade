@@ -22,24 +22,29 @@ public interface ISiteMetier {
 	
 	
 	//1-1 CREATE SITE  
-	public Site createSite (String nomSite, int altitude, int nbVoies, int hauteurMin, int hauteurMax,
+	    Site createSite(String nomSite, int altitude, int nbVoies, int hauteurMin, int hauteurMax,
 			int longueurTotaleVoies, SiteNiveauDePratique siteNiveauDePratique, SiteCotation siteCotation,
 			SiteOrientation siteOrientation, SiteRegion siteRegion, SiteTypeRoche siteTypeRoche, SiteTag siteTag);
+	
+		Site addSite(Site site);
 
 	//1-2 READ SITE
-		public Site readSite (Long numSite);
+		Site readSite (Long numSite);
 	
 	//1-3 UPDATE DE SON ESPACE PERSONNEL ******** [PAR L'UTILISATEUR MEMBRE OU VISITEUR]
-		public Site updateSite (Long numSite, String nomSite, int altitude, int nbVoies, int hauteurMin, int hauteurMax,
+		/**public Site updateSite (Long numSite, String nomSite, int altitude, int nbVoies, int hauteurMin, int hauteurMax,
 				int longueurTotaleVoies, SiteNiveauDePratique siteNiveauDePratique, SiteCotation siteCotation,
-				SiteOrientation siteOrientation, SiteRegion siteRegion, SiteTypeRoche siteTypeRoche, SiteTag siteTag);
+				SiteOrientation siteOrientation, SiteRegion siteRegion, SiteTypeRoche siteTypeRoche, SiteTag siteTag);**/
+		
+		Site update(Long numSite);
+		
 	
 		
 		//1-3-1 CREATION D'UN TAG 
-			public Site createSiteTag (Long numSite, SiteTag siteTag);
+		Site createSiteTag (Long numSite, SiteTag siteTag);
 		
 	//1-4 DELETE DE SON ESPACE PERSONNEL ******* [PAR L'UTILISATEUR MEMBRE OU VISITEUR]
-		public void deleteSite (Long numSite);
+		void deleteSite (Long numSite);
 
 	
 		
