@@ -19,11 +19,11 @@ public class SecuriteConfig extends WebSecurityConfigurerAdapter {
 	          PasswordEncoderFactories.createDelegatingPasswordEncoder();
 	        auth
 	          .inMemoryAuthentication()
-	          .withUser("user")
+	          .withUser("Bob")
 	          .password(encoder.encode("user"))
 	          .roles("USER")
 	          .and()
-	          .withUser("admin")
+	          .withUser("Bobby")
 	          .password(encoder.encode("admin"))
 	          .roles("USER", "ADMIN");
 	    }
