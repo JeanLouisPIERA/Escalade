@@ -3,7 +3,8 @@
 <div class="navbar-collapse">
      <ul class="nav navbar-nav">
           <li><a href="/">Accueil</a></li>
-          <li class="active"><a href="/SiteVue">Sites</a></li>
+          <li><a href="/SiteVue">Liste des Sites</a></li>
+          <li><a href="/NewSite">Nouveau Site</a></li>
      </ul>
     
      <ul class="nav navbar-nav navbar-right">

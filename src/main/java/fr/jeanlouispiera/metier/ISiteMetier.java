@@ -5,6 +5,7 @@ import java.util.List;
 import fr.jeanlouispiera.entities.Site;
 
 import fr.jeanlouispiera.entities.SiteCotation;
+import fr.jeanlouispiera.entities.SiteMassif;
 import fr.jeanlouispiera.entities.SiteNiveauDePratique;
 import fr.jeanlouispiera.entities.SiteOrientation;
 import fr.jeanlouispiera.entities.SiteRegion;
@@ -22,9 +23,10 @@ public interface ISiteMetier {
 	
 	
 	//1-1 CREATE SITE  
-	    Site createSite(String nomSite, int altitude, int nbVoies, int hauteurMin, int hauteurMax,
-			int longueurTotaleVoies, SiteNiveauDePratique siteNiveauDePratique, SiteCotation siteCotation,
-			SiteOrientation siteOrientation, SiteRegion siteRegion, SiteTypeRoche siteTypeRoche, SiteTag siteTag);
+	    Site createSite(String nomSite, int altitude, int nbVoies, int hauteurMin, int hauteurMax, int longueurTotaleVoies,
+				SiteNiveauDePratique siteNiveauDePratique, SiteCotation siteCotation, SiteMassif siteMassif,
+				SiteOrientation siteOrientation, SiteRegion siteRegion, SiteTypeRoche siteTypeRoche, SiteTag siteTag);
+
 	
 		Site addSite(Site site);
 
@@ -58,6 +60,7 @@ public interface ISiteMetier {
    public List<Site> searchByHauteurlongueurTotalesVoies(int longueurTotaleVoies);
    public List<Site> searchBySiteNiveauDePratique(SiteNiveauDePratique siteNiveauDePratique);
    public List<Site> searchBySiteCotation(SiteCotation siteCotation);
+   public List<Site> searchBySiteMassif(SiteMassif siteMassif);
    public List<Site> searchBySiteOrientation(SiteOrientation siteOrientation);
    public List<Site> searchBySiteRegion(SiteRegion siteRegion);
    public List<Site> searchBySiteTypeRoche(SiteTypeRoche siteTypeRoche);

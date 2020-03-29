@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import fr.jeanlouispiera.entities.Site;
 import fr.jeanlouispiera.entities.SiteCotation;
+import fr.jeanlouispiera.entities.SiteMassif;
 import fr.jeanlouispiera.entities.SiteNiveauDePratique;
 import fr.jeanlouispiera.entities.SiteOrientation;
 import fr.jeanlouispiera.entities.SiteRegion;
@@ -26,6 +27,7 @@ public interface ISiteRepository extends JpaRepository<Site, Long>{
 	   List<Site> findByLongueurTotaleVoies(int longueurTotaleVoies);
 	   List<Site> findBySiteNiveauDePratique(SiteNiveauDePratique siteNiveauDePratique);
 	   List<Site> findBySiteCotation(SiteCotation siteCotation);
+	   List<Site> findBySiteMassif(SiteMassif siteMassif);
 	   List<Site> findBySiteOrientation(SiteOrientation siteOrientation);
 	   List<Site> findBySiteRegion(SiteRegion siteRegion);
 	   List<Site> findBySiteTypeRoche(SiteTypeRoche siteTypeRoche);

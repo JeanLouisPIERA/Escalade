@@ -8,6 +8,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import fr.jeanlouispiera.entities.Site;
 import fr.jeanlouispiera.entities.SiteCotation;
+import fr.jeanlouispiera.entities.SiteMassif;
 import fr.jeanlouispiera.entities.SiteNiveauDePratique;
 import fr.jeanlouispiera.entities.SiteOrientation;
 import fr.jeanlouispiera.entities.SiteRegion;
@@ -44,8 +45,8 @@ public class EscaladeApplication implements CommandLineRunner {
 		utilisateurMetier.updateUser((long) 1, "new_password");
 		//utilisateurMetier.deleteUser((long) 2);
 		Utilisateur u4 = utilisateurMetier.createUser("Charlemagne", "aixlachapelle@yahoo.fr", "gtpo87");
-		Site s1 = siteMetier.createSite("Ailefroide", 1500, 500, 4, 500, 8000, SiteNiveauDePratique.CONFIRME, SiteCotation.C41, SiteOrientation.NE, SiteRegion.AUV, SiteTypeRoche.GRANIT, SiteTag.AMIS);
-		Site s2 = siteMetier.createSite("Valgorge", 800, 60, 5, 5, 600, SiteNiveauDePratique.DEBUTANT, SiteCotation.C51, SiteOrientation.SO, SiteRegion.AUV, SiteTypeRoche.GRANIT, SiteTag.PAS); 
+		Site s1 = siteMetier.createSite("Ailefroide", 1500, 500, 4, 500, 8000, SiteNiveauDePratique.CONFIRME, SiteCotation.C41, SiteMassif.ALP ,SiteOrientation.NE, SiteRegion.AUV, SiteTypeRoche.GRANIT, SiteTag.AMIS);
+		Site s2 = siteMetier.createSite("Valgorge", 800, 60, 5, 5, 600, SiteNiveauDePratique.DEBUTANT, SiteCotation.C51, SiteMassif.ARD,SiteOrientation.SO, SiteRegion.AUV, SiteTypeRoche.GRANIT, SiteTag.PAS); 
 		topoMetier.createTopo("420 itinéraires", "Oisans sauvage Livre Est", "Jean-Michel Cambon", "2011", 15, 30, "français", 250, TopoStatut.DIS, u1, s1);
 		topoMetier.createTopo("Esacalade en Briançonnais", "Haute Vallée de la Durance et Queyras", "Yann, Martine et Jean-jacques Rolland","2012", 20, 20, "français", 130, TopoStatut.DEM, u4, s1);
 		topoMetier.createTopo("Valgorge", "site récent", "castelbloc@gmail.com","2010", 15, 30, "français", 250, TopoStatut.PEC, u2, s2);

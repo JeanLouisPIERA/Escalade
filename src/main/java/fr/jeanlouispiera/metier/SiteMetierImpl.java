@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import fr.jeanlouispiera.dao.ISiteRepository;
 import fr.jeanlouispiera.entities.Site;
 import fr.jeanlouispiera.entities.SiteCotation;
+import fr.jeanlouispiera.entities.SiteMassif;
 import fr.jeanlouispiera.entities.SiteNiveauDePratique;
 import fr.jeanlouispiera.entities.SiteOrientation;
 import fr.jeanlouispiera.entities.SiteRegion;
@@ -33,11 +34,11 @@ public class SiteMetierImpl implements ISiteMetier{
 	
 	
 	@Override
-	public Site createSite(String nomSite, int altitude, int nbVoies, int hauteurMin, int hauteurMax,
-			int longueurTotaleVoies, SiteNiveauDePratique siteNiveauDePratique, SiteCotation siteCotation,
+	public Site createSite(String nomSite, int altitude, int nbVoies, int hauteurMin, int hauteurMax, int longueurTotaleVoies,
+			SiteNiveauDePratique siteNiveauDePratique, SiteCotation siteCotation, SiteMassif siteMassif,
 			SiteOrientation siteOrientation, SiteRegion siteRegion, SiteTypeRoche siteTypeRoche, SiteTag siteTag) {
 		Site s = new Site (nomSite, altitude, nbVoies, hauteurMin, hauteurMax,
-				longueurTotaleVoies, siteNiveauDePratique, siteCotation,
+				longueurTotaleVoies, siteNiveauDePratique, siteCotation, siteMassif,
 				siteOrientation, siteRegion, siteTypeRoche, siteTag);
 				iSiteRepository.save(s);
 		return s;
@@ -143,6 +144,13 @@ public class SiteMetierImpl implements ISiteMetier{
 	public List<Site> searchBySiteCotation(SiteCotation siteCotation) {
 		List<Site> s = iSiteRepository.findBySiteCotation(siteCotation);
 		return s;
+	}
+	
+	@Override
+	 public List<Site> searchBySiteMassif(SiteMassif siteMassif) {
+		List<Site> s = iSiteRepository.findBySiteMassif(siteMassif);
+		return s;
+		
 	}
 
 	@Override
