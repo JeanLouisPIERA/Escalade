@@ -5,6 +5,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -32,7 +34,6 @@ public class SiteMetierImpl implements ISiteMetier{
 		return iSiteRepository.save(site);
 	}
 	
-	
 	@Override
 	public Site createSite(String nomSite, int altitude, int nbVoies, int hauteurMin, int hauteurMax, int longueurTotaleVoies,
 			SiteNiveauDePratique siteNiveauDePratique, SiteCotation siteCotation, SiteMassif siteMassif,
@@ -45,48 +46,17 @@ public class SiteMetierImpl implements ISiteMetier{
 		
 	}
 	
-	
 
 	@Override
-	public Site readSite(Long numSite) {
+	public Site readSite(long numSite) {
 		Site s = iSiteRepository.findById(numSite).get();
-		if(s==null) throw new RuntimeException("Espace utilisateur introuvable");
+		if(s==null) throw new RuntimeException("Espace site introuvable");
 		return s;
 	}
 	
 	@Override
-	public Site update(Long numSite) {
-		Site site= readSite(numSite);
-		return this.addSite(site);
-	}
-	
-	
-	/**
-	@Override
-	public Site updateSite(Long numSite, String nomSite, int altitude, int nbVoies, int hauteurMin, int hauteurMax,
-			int longueurTotaleVoies, SiteNiveauDePratique siteNiveauDePratique, SiteCotation siteCotation,
-			SiteOrientation siteOrientation, SiteRegion siteRegion, SiteTypeRoche siteTypeRoche, SiteTag siteTag) {
-		Site s=readSite(numSite);
-		s.setAltitude(altitude);
-		s.setHauteurMax(hauteurMax);
-		s.setHauteurMin(hauteurMin);
-		s.setLongueurTotaleVoies(longueurTotaleVoies);
-		s.setNbVoies(nbVoies);
-		s.setSiteCotation(siteCotation);
-		s.setSiteNiveauDePratique(siteNiveauDePratique);
-		s.setSiteOrientation(siteOrientation);
-		s.setSiteRegion(siteRegion);
-		s.setSiteTypeRoche(siteTypeRoche);
-		return s;
-		
-	}**/
-	
-	
-	@Override
-	public Site createSiteTag(Long numSite,  SiteTag siteTag) {
-		Site s=readSite(numSite);
-		s.setSiteTag(siteTag);
-		return s;
+	public Site updateSite(Site site) {
+		return iSiteRepository.save(site);
 	}
 
 	@Override
@@ -187,6 +157,21 @@ public class SiteMetierImpl implements ISiteMetier{
 		return s;
 	}
 
+
+	@Override
+	public Page<Site> findAll(Pageable pageable) {
+		Page<Site> allSites = iSiteRepository.findAll(pageable);
+		return allSites;
+	}
+
+	@Override
+	public Site createSiteTag(Long numSite, SiteTag siteTag) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	
 	
 
 	

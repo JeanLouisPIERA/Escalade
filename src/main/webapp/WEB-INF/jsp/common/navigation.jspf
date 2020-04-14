@@ -1,11 +1,34 @@
-<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
-<nav role="navigation" class="navbar navbar-default">
+
+
+<div class="navbar navbar-default">
+
+ <nav role="navigation" class="navbar navbar-default">
 <div class="navbar-collapse">
+<a class="navbar-brand">Les Amis de l'Escalade</a>
+  <div class="container">
+ 
+  
+    
+    
+      
+      <div class="navbar-header">
+    
      <ul class="nav navbar-nav">
-          <li><a href="/">Accueil</a></li>
-          <li><a href="/SiteVue">Liste des Sites</a></li>
-          <li><a href="/NewSite">Nouveau Site</a></li>
+      <li class="nav-item active">
+      <a class="nav-link" href="/"> Accueil <span class="sr-only"></span></a>
+    </li>
+     
+    
+     
+     
+          
+         
+          <li><a href="/user/sites">Sites</a></li>
+          <li><a href="#">Topos</a></li>
      </ul>
+    
+     </div>
+    
     
      <ul class="nav navbar-nav navbar-right">
      	 <li>
@@ -16,8 +39,21 @@
 		 <li>
 	         <a href="/logout">Logout</a>
          </li> 
+         <li>
+         <a href="mailto:jeanlouispiera@yahoo.fr?subject=Premiercontact&cc=jlp340105@gmail.com&body=Bonjour,">
+  Nous Contacter</a>
+         </li>
      </ul>
-     
- </div>
+    
+    </div>
+</div>
 </nav>
+ 
+</div>
 
+     
+
+
+
+				
+ 

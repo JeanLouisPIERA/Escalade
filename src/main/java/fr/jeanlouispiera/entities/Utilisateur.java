@@ -41,6 +41,10 @@ public class Utilisateur implements Serializable {
 		this.codeUtilisateur = codeUtilisateur;
 	}
 	
+	public Utilisateur(String nomUtilisateur) {
+		super();
+		this.nomUtilisateur = nomUtilisateur;
+	}
 	
 	public Long getCodeUtilisateur() {
 		return codeUtilisateur;

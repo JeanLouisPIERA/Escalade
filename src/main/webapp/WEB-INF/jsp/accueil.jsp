@@ -1,16 +1,55 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
-<%@ include file="common/header.jspf"%>
+<html>
+
+
+<head>
+
+<title>Accueil</title>
+
+</head>
+
+<body> 
+
+<div id= "header1">
+<%@ include file="common/header1.jspf"%>
 <%@ include file="common/navigation.jspf"%>
+
+
 <div class="container">
 
+    <div class="container-fluid d-flex center-block">
+    <div class="row d-flex justify-content-center">
+  	<div class="col-md-6 col-md-offset-3">
+  	<div class="wrapper">
+		  
+
+
+
+
  <div class="panel panel-primary">
-     <div class="panel-heading">MON ESPACE PERSONNEL</div>
+     <div class="panel-heading">Bienvenue dans votre Espace Personnel</div>
         <div class="panel-body">
-           Bienvenue ${name}!! <a href="/SiteVue">Cliquer ici</a> pour consulter 
-           tous les sites d'escalade.
+           Bonjour ${name}!!<br></br> <a href="/user/sites/">Cliquer ici</a> pour accéder aux sites d'escalade. 
+           <br></br> <a href="#">Cliquer ici</a> pour consulter tous les topos. 
+           <br></br>
         </div>
      </div>
  </div>
-<%@ include file="common/footer.jspf"%>
+ </div>
+ </div>
+ </div>
+ </div>
+ 
+<div id="footer">
+<%@ include file="common/footer1.jspf"%>
+</div>
+</div>
+
+</body>
+
+</html>

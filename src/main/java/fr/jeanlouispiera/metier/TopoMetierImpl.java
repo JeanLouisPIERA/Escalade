@@ -28,38 +28,32 @@ public class TopoMetierImpl implements ITopoMetier {
 		return t;
 	}
 	
+	@Override
+	public Topo addTopo(Topo topo) {
+		return iTopoRepository.save(topo);
+	}
+	
 
 	@Override
-	public Topo readTopo(Long codeTopo) {
+	public Topo readTopo(long codeTopo) {
 		Topo t=iTopoRepository.findById(codeTopo).get();
-		if(t==null) throw new RuntimeException("Espace utilisateur introuvable");
+		if(t==null) throw new RuntimeException("Espace Topo introuvable");
 		return t;
 	}
-
+	
 	@Override
-	public Topo updateTopo(Long codeTopo, String nomTopo, String descriptionTopo, String editeur, String dateParution, int largeur,
-			int longueur, String langue, int nbPages, TopoStatut topoStatut, Utilisateur utilisateur, Site site) {
-		Topo t=readTopo(codeTopo);
-		t.setNomTopo(nomTopo);
-		t.setDateParution(dateParution);
-		t.setDescriptionTopo(descriptionTopo);
-		t.setEditeur(editeur);
-		t.setLangue(langue);
-		t.setLargeur(largeur);
-		t.setLongueur(longueur);
-		t.setNbPages(nbPages);
-		t.setNomTopo(nomTopo);
-		t.setTopoStatut(topoStatut);
-		t.setUtilisateur(utilisateur);
-		t.setSite(site);
-		return t;
+	public Topo updateTopo(Topo topo) {
+		return iTopoRepository.save(topo);
 	}
+	
 
 	@Override
-	public void deleteTopo(Long codeTopo) {
-		iTopoRepository.delete(readTopo(codeTopo));
+	public void deleteTopo(long codeTopo) {
+		iTopoRepository.deleteById(codeTopo);
 		
 	}
+	
+	
 	
 	//********SELECTIONNER LES TOPOS A PARTIR D'UN ATTRIBUT COMMUN ******** 
 	
@@ -112,6 +106,13 @@ public class TopoMetierImpl implements ITopoMetier {
 		return t;
 	}
 	
+	@Override
+	public List<Topo> findToposBySite(Site site) {
+		List<Topo> t = iTopoRepository.findBySite(site);
+		return t;
+	}
+
+	
 	
 	//*******GERER LE PRET D'UN TOPO*******************
 	
@@ -140,6 +141,19 @@ public class TopoMetierImpl implements ITopoMetier {
 		return changerTopoStatut(codeTopo, TopoStatut.PEC, TopoStatut.DIS);
 	}
 
+
+	
+
+
+	
+
+
+	
+
+
+	
+
+	
 
 	
 

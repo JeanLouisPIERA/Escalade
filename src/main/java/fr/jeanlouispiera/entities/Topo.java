@@ -87,6 +87,16 @@ public class Topo implements Serializable {
 		this.utilisateur = utilisateur;
 		this.site = site;
 	}
+	
+	
+
+
+	public Topo(Site site) {
+		super();
+		this.site = site;
+	}
+
+
 
 
 	public String getNomTopo() {

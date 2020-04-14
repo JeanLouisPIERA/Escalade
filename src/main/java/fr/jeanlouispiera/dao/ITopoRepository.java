@@ -20,6 +20,8 @@ public interface ITopoRepository extends JpaRepository<Topo, Long>{
 	List<Topo> findByDateParution(String dateParution);
 	List<Topo> findByTopoStatut(TopoStatut topostatut);
 	List<Topo> findByUtilisateur(Utilisateur utilisateur);
+	
+	@Query
 	List<Topo> findBySite(Site site);
  	
 }

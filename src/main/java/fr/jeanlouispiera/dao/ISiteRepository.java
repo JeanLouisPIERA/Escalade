@@ -2,6 +2,9 @@ package fr.jeanlouispiera.dao;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -32,8 +35,12 @@ public interface ISiteRepository extends JpaRepository<Site, Long>{
 	   List<Site> findBySiteRegion(SiteRegion siteRegion);
 	   List<Site> findBySiteTypeRoche(SiteTypeRoche siteTypeRoche);
 	   List<Site> findBySiteTag(SiteTag siteTag);
-	
 	   
+	
+	   /**public interface OperationRepository extends JpaRepository<Operation, Long>{
+		@Query("select o from Operation o where o.compte.codeCompte=:x order by o.dateOperation desc")
+		public Page<Operation> listOperation(@Param("x")String codeCpte, Pageable pageable);
+	}**/
 	  
 	   
 	

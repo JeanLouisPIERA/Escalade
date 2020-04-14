@@ -2,6 +2,10 @@ package fr.jeanlouispiera.metier;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+
+import org.springframework.data.domain.Pageable;
+
 import fr.jeanlouispiera.entities.Site;
 
 import fr.jeanlouispiera.entities.SiteCotation;
@@ -23,22 +27,20 @@ public interface ISiteMetier {
 	
 	
 	//1-1 CREATE SITE  
+	    
 	    Site createSite(String nomSite, int altitude, int nbVoies, int hauteurMin, int hauteurMax, int longueurTotaleVoies,
 				SiteNiveauDePratique siteNiveauDePratique, SiteCotation siteCotation, SiteMassif siteMassif,
 				SiteOrientation siteOrientation, SiteRegion siteRegion, SiteTypeRoche siteTypeRoche, SiteTag siteTag);
-
+	    
 	
 		Site addSite(Site site);
 
 	//1-2 READ SITE
-		Site readSite (Long numSite);
+		Site readSite (long numSite);
 	
 	//1-3 UPDATE DE SON ESPACE PERSONNEL ******** [PAR L'UTILISATEUR MEMBRE OU VISITEUR]
-		/**public Site updateSite (Long numSite, String nomSite, int altitude, int nbVoies, int hauteurMin, int hauteurMax,
-				int longueurTotaleVoies, SiteNiveauDePratique siteNiveauDePratique, SiteCotation siteCotation,
-				SiteOrientation siteOrientation, SiteRegion siteRegion, SiteTypeRoche siteTypeRoche, SiteTag siteTag);**/
 		
-		Site update(Long numSite);
+		Site updateSite(Site site);
 		
 	
 		
@@ -65,14 +67,13 @@ public interface ISiteMetier {
    public List<Site> searchBySiteRegion(SiteRegion siteRegion);
    public List<Site> searchBySiteTypeRoche(SiteTypeRoche siteTypeRoche);
    public List<Site> searchBySiteTag(SiteTag siteTag);
-	      
+    
 	//2-1 AFFICHER TOUS LES SITES
 		   public List<Site> displayAllSites();
 
-   
+		   public Page<Site> findAll(Pageable pageable);
 
 }
-
 
 
 
