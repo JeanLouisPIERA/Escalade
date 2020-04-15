@@ -2,8 +2,8 @@ package fr.jeanlouispiera.entities;
 
 public enum SiteTag {
 	
-		AMIS ("AMIS","Officiel les Amis de l'Escalade"), 
-		PAS ("PAS","Aucun Tag");
+		AMIS ("AMIS","Tag Officiel"), 
+		PAS ("PAS","Non Homologué");
 
 	 private String code;
 	   private String text;
@@ -41,9 +41,9 @@ public enum SiteTag {
 	@Override
 	public String toString() {
 		if(this==AMIS) {
-			return"Officiel Amis de l'Escalade";
+			return"Tag Officiel";
 		}else if (this==PAS) {
-			return"Aucun Tag";
+			return"Non Homologué";
 		}
 		return super.toString();
 		

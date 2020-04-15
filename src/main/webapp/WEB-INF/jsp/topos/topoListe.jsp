@@ -9,7 +9,7 @@
 
 <head>
 
-<title>Site Liste Page</title>
+<title>Topo Liste Page</title>
 
 </head>
 
@@ -28,7 +28,7 @@
 <div class="wrapper">
 
  <div>
- <a type="button" class="btn btn-primary btn-md" href="/user/sites/newSite">Ajouter un nouveau Site</a>
+ <a type="button" class="btn btn-primary btn-md" href="/user/topos/newTopo">Ajouter un nouveau Topo</a>
  </div>
  </div>
  </div>
@@ -51,7 +51,7 @@
  <div class="panel panel-primary">
  
   <div class="panel-heading">
-   <h3>Informations sur les sites</h3>
+   <h3>Tous les topos des Amis de l'Escalade</h3>
   </div>
   
   <div class="panel-body">
@@ -59,31 +59,31 @@
     <thead>		  	  	 
     			 <tr>
 				      <th>Nom</th>
-				      <th>Massif</th>
-				      <th>Cotation</th>
-				      <th>Niveau</th>
-				      <th>Tag</th>
+				      <th>Site</th>
+				      <th>Membre</th>
+				      <th>Editeur</th>
+				      <th>Statut</th>
 			     </tr>
 			     </thead>
 			     <tbody>
-   				 <c:forEach var="site" items="${sites}">
+   				 <c:forEach var="topo" items="${topos}">
    				 <tr>
-			          <td>${site.nomSite}</td>
-			          <td>${site.siteMassif.getText()}</td>
-			          <td>${site.siteCotation.getText()}</td>
-			          <td>${site.siteNiveauDePratique.getText()}</td>
-			          <td>${site.siteTag.getText()}</td>
+			          <td>${topo.nomTopo}</td>
+			          <td>${topo.site.getNomSite()}</td>
+			          <td>${topo.utilisateur.getNomUtilisateur()}</td>
+			          <td>${topo.editeur}</td>
+			          <td>${topo.topoStatut.getText()}</td>
 			          <td>
 			          	<a  type="button" class="btn btn-success" 
-				        href="/user/sites/${site.numSite}"> + d'infos ? </a>
+				        href="#"> + d'infos ? </a>
 		        	  </td>
 		        	   <td>
 				        <a  type="button" class="btn btn-warning" 
-				        href="/user/sites/updateSite/${site.numSite}">Mise à jour</a></td>
+				        href="#">Mise à jour</a></td>
 			          <sec:authorize access="hasRole('ROLE_ADMIN')">
 			          <td>
 			          	<a type="button"  class="btn btn-danger" 
-			        	href="/admin/sites/deleteSite/${site.numSite}">Suppression</a>
+			        	href="#">Suppression</a>
 			          </td>
 			          </sec:authorize>
 		        	  
@@ -106,12 +106,12 @@
    			
    			<div class="container">
     		<!-- div class="row-lg-2" -->
-    			<c:if test="${sites.size() > 0 }">
+    			<c:if test="${topos.size() > 0 }">
 		            <!-- ul class="pagination-sm"-->
 		            <ul class="nav nav-pills">
 		                <c:forEach begin="0" end="${totalPages-1}" var="page">
 		                    <li class="page-item">
-		                        <a class="btn btn-info" href="sites?page=${page}&size=${size}" class="page-target">${page+1}</a>
+		                        <a class="btn btn-info" href="topos?page=${page}&size=${size}" class="page-target">${page+1}</a>
 		                    </li>
 		                </c:forEach>
 		            </ul>
@@ -137,7 +137,7 @@
 
 <div class="panel panel-primary">
 	<div class="panel-heading">
-    <h3> A trier </h3>
+    <h3>Sélection </h3>
     </div>
     
     <br>
@@ -145,23 +145,17 @@
     <div class="panel-body">
     
      <table class="table table-striped table-condensed table-bordered">
-   
+    <thead>		  	  	 
+    			
+			     </thead>
 			     
 			     <tbody>
-			     
-			     <tr>
-   				 	 
-			          <td>
-			          	<a  type="button" class="btn btn-info" 
-				        href="/user/sitesByNom"> par Nom </a>
-		        	  </td>
-       	  		</tr>
    				 
    				 <tr>
    				 	 
 			          <td>
 			          	<a  type="button" class="btn btn-info" 
-				        href="/user/sitesByMassif"> par Massif </a>
+				        href="#"> par Site </a>
 		        	  </td>
        	  		</tr>
        	  		
@@ -169,7 +163,7 @@
    				 	  
 			          <td>
 			          	<a  type="button" class="btn btn-info" 
-				        href="/user/sitesByCotation"> par Cotation </a>
+				        href="#"> par Utilisateur </a>
 		        	  </td>
        	  		</tr>
        	  		
@@ -177,18 +171,11 @@
    				 	  
 			          <td>
 			          	<a  type="button" class="btn btn-info" 
-				        href="/user/sitesByNiveau"> par Niveau </a>
+				        href="#"> par Disponibilité </a>
 		        	  </td>
        	  		</tr>
        	  		
-       	  		 <tr>
-   				 	 
-			          <td>
-			          	<a  type="button" class="btn btn-info" 
-				        href="/user/sitesByTag"> par Tag </a>
-		        	  </td>
-       	  		</tr>
-       	  		
+       	  		 
 		        	  
 		        	  
 				</tbody>

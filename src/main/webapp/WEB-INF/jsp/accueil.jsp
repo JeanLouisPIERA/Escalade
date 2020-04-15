@@ -34,9 +34,12 @@
  <div class="panel panel-primary">
      <div class="panel-heading">Bienvenue dans votre Espace Personnel</div>
         <div class="panel-body">
-           Bonjour ${name}!!<br></br> <a href="/user/sites/">Cliquer ici</a> pour accéder aux sites d'escalade. 
-           <br></br> <a href="#">Cliquer ici</a> pour consulter tous les topos. 
+        <div>
+           Bonjour ${name}!!<br></br> <a href="/user/sites">Cliquer ici</a> pour accéder aux sites d'escalade. 
            <br></br>
+        </div>
+        <div>
+        <br></br> <a href="/user/topos">Cliquer ici</a> pour consulter tous les topos. 
         </div>
      </div>
  </div>
@@ -44,7 +47,7 @@
  </div>
  </div>
  </div>
- 
+ </div>
 <div id="footer">
 <%@ include file="common/footer1.jspf"%>
 </div>

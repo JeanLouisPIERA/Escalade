@@ -29,7 +29,7 @@ import fr.jeanlouispiera.metier.IUtilisateurMetier;
 
 
 @SpringBootApplication
-public class EscaladeApplication implements CommandLineRunner {
+public class EscaladeApplication /**implements CommandLineRunner**/ {
 	
 	@Autowired
 	private IUtilisateurMetier utilisateurMetier;
@@ -44,7 +44,7 @@ public class EscaladeApplication implements CommandLineRunner {
 		SpringApplication.run(EscaladeApplication.class, args);
 	}
 
-	
+	/**
 	@Override
 	public void run(String... args) throws Exception {
 		Utilisateur u1 = utilisateurMetier.createUser("Jean", "jeannot@gmail.com", "jj56p");
@@ -66,7 +66,7 @@ public class EscaladeApplication implements CommandLineRunner {
 	    //topoMetier.requestBooking((long) 7);
 		//topoMetier.confirmBooking((long) 8);
 		//topoMetier.endBooking((long) 9);
-	    }
+	    }**/
 	
 	
 	    

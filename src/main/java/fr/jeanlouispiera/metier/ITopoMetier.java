@@ -2,10 +2,8 @@ package fr.jeanlouispiera.metier;
 
 import java.util.List;
 
-
-
-
-
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import fr.jeanlouispiera.entities.Site;
 import fr.jeanlouispiera.entities.Topo;
@@ -46,7 +44,7 @@ public interface ITopoMetier {
 		   List<Topo> searchBySite(Site site);
 		      
 	   //2-1 AFFICHER TOUS LES TOPOS
-		   public List<Topo> displayAllTopos();
+		   public Page<Topo> findAll(Pageable pageable);
 				
 	//3 GERER LE PRET D'UN TOPO *****************************************
 		   public Topo changerTopoStatut(Long codeTopo, TopoStatut TopoStatut1, TopoStatut TopoStatut2);

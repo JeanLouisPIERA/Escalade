@@ -3,11 +3,11 @@ package fr.jeanlouispiera.entities;
 public enum SiteMassif {
 	
 	ALP ("ALP", "Alpes"),
-	PYR ("PYR", "Pyrénées"),
-	MAC ("MAC", "Massif Central"),
-	VOS ("VOS", "Vosges"),
 	JUR ("JUR", "Jura"), 
-	ARD ("ARD", "Monts d'Ardèche");
+	MAC ("MAC", "Massif Central"),
+	ARD ("ARD", "Monts d'Ardèche"),
+	PYR ("PYR", "Pyrénées"),
+	VOS ("VOS", "Vosges");
 	
    private String code;
    private String text;

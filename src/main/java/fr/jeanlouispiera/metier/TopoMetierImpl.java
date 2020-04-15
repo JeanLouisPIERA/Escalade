@@ -3,7 +3,8 @@ package fr.jeanlouispiera.metier;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -101,8 +102,8 @@ public class TopoMetierImpl implements ITopoMetier {
 	//*******AFFICHER ET SELECTIONNER LES TOPOS *****************
 	
 	@Override
-	public List<Topo> displayAllTopos() {
-		List<Topo> t = iTopoRepository.findAll();
+	public Page<Topo> findAll(Pageable pageable) {
+		Page<Topo> t = iTopoRepository.findAll(pageable);
 		return t;
 	}
 	

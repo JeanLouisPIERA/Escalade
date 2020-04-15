@@ -111,7 +111,7 @@
 		            <ul class="nav nav-pills">
 		                <c:forEach begin="0" end="${totalPages-1}" var="page">
 		                    <li class="page-item">
-		                        <a class="btn btn-info" href="sites?page=${page}&size=${size}" class="page-target">${page+1}</a>
+		                        <a class="btn btn-info" href="sitesByCotation?page=${page}&size=${size}" class="page-target">${page+1}</a>
 		                    </li>
 		                </c:forEach>
 		            </ul>
@@ -137,7 +137,7 @@
 
 <div class="panel panel-primary">
 	<div class="panel-heading">
-    <h3> A trier </h3>
+    <h3>A trier </h3>
     </div>
     
     <br>
@@ -145,11 +145,13 @@
     <div class="panel-body">
     
      <table class="table table-striped table-condensed table-bordered">
-   
+    <thead>		  	  	 
+    			
+			     </thead>
 			     
 			     <tbody>
 			     
-			     <tr>
+			        <tr>
    				 	 
 			          <td>
 			          	<a  type="button" class="btn btn-info" 

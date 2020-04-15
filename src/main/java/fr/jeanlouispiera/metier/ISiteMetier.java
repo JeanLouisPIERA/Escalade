@@ -1,7 +1,5 @@
 package fr.jeanlouispiera.metier;
 
-import java.util.List;
-
 import org.springframework.data.domain.Page;
 
 import org.springframework.data.domain.Pageable;
@@ -38,39 +36,23 @@ public interface ISiteMetier {
 	//1-2 READ SITE
 		Site readSite (long numSite);
 	
-	//1-3 UPDATE DE SON ESPACE PERSONNEL ******** [PAR L'UTILISATEUR MEMBRE OU VISITEUR]
+	//1-3 UPDATE DE SON ESPACE PERSONNEL 
 		
 		Site updateSite(Site site);
 		
 	
 		
-		//1-3-1 CREATION D'UN TAG 
-		Site createSiteTag (Long numSite, SiteTag siteTag);
+	//1-4 DELETE DE SON ESPACE PERSONNEL
 		
-	//1-4 DELETE DE SON ESPACE PERSONNEL ******* [PAR L'UTILISATEUR MEMBRE OU VISITEUR]
 		void deleteSite (Long numSite);
 
 	
 		
 		
-//2 SELECTIONNER TOUS LES SITES EXISTANTS A PARTIR D'UNE VALEUR D'ATTRIBUTE EN COMMUN ******** [PAR UN VISITEUR] OU [PAR UN MEMBRE]
-   public List<Site> searchByNomSite(String nomSite);
-   public List<Site> searchByAltitude(int altitude);
-   public List<Site> searchByNbVoies(int nbVoies);
-   public List<Site> searchByHauteurMin(int hauteurMin);
-   public List<Site> searchByHauteurMax(int hauteurMax);
-   public List<Site> searchByHauteurlongueurTotalesVoies(int longueurTotaleVoies);
-   public List<Site> searchBySiteNiveauDePratique(SiteNiveauDePratique siteNiveauDePratique);
-   public List<Site> searchBySiteCotation(SiteCotation siteCotation);
-   public List<Site> searchBySiteMassif(SiteMassif siteMassif);
-   public List<Site> searchBySiteOrientation(SiteOrientation siteOrientation);
-   public List<Site> searchBySiteRegion(SiteRegion siteRegion);
-   public List<Site> searchBySiteTypeRoche(SiteTypeRoche siteTypeRoche);
-   public List<Site> searchBySiteTag(SiteTag siteTag);
-    
+//2 SELECTIONNER TOUS LES SITES EXISTANTS A PARTIR D'UNE VALEUR D'ATTRIBUTE EN COMMUN 
+      
 	//2-1 AFFICHER TOUS LES SITES
-		   public List<Site> displayAllSites();
-
+		   
 		   public Page<Site> findAll(Pageable pageable);
 
 }

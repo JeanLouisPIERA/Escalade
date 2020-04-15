@@ -73,12 +73,13 @@ public class SiteController {
 	        
 	    }
 		
-		//**************************** READ ******************************************************
+		//**************************** READ DES SITES *************************************************
 		
 		
 		@RequestMapping(value="/user/sites",method=RequestMethod.GET)
 		public String listeSite(ModelMap model, @RequestParam(name="page", defaultValue="0") int page, 
-				@RequestParam(name="size", defaultValue="3") int size ){
+				@RequestParam(name="size", defaultValue="4") int size ){
+			
 			Page<Site> sites = siteMetier.findAll(PageRequest.of(page, size, Sort.unsorted()));
 			
 			model.addAttribute("sites",sites.getContent());
@@ -87,9 +88,97 @@ public class SiteController {
 	        model.addAttribute("totalPages", sites.getTotalPages());
 	        model.addAttribute("totalElements", sites.getTotalElements());
 	        model.addAttribute("size", sites.getSize());
-			
+	        
 			return "sites/siteListe";
 		}
+		
+		
+		@RequestMapping(value="/user/sitesByMassif",method=RequestMethod.GET)
+		public String listeSiteByMassif(ModelMap model, @RequestParam(name="page", defaultValue="0") int page, 
+				@RequestParam(name="size", defaultValue="4") int size ){
+		
+			Page<Site> sites = siteMetier.findAll(PageRequest.of(page, size, Sort.by("siteMassif").ascending()));
+		
+			model.addAttribute("sites",sites.getContent());
+			model.addAttribute("page", Integer.valueOf(page));
+			model.addAttribute("number", sites.getNumber());
+	        model.addAttribute("totalPages", sites.getTotalPages());
+	        model.addAttribute("totalElements", sites.getTotalElements());
+	        model.addAttribute("size", sites.getSize());
+			
+			return "sites/siteListeByMassif";
+			
+			}
+		
+		@RequestMapping(value="/user/sitesByCotation",method=RequestMethod.GET)
+		public String listeSiteByCotation(ModelMap model, @RequestParam(name="page", defaultValue="0") int page, 
+				@RequestParam(name="size", defaultValue="4") int size ){
+		
+			Page<Site> sites = siteMetier.findAll(PageRequest.of(page, size, Sort.by("siteCotation").ascending()));
+		
+			model.addAttribute("sites",sites.getContent());
+			model.addAttribute("page", Integer.valueOf(page));
+			model.addAttribute("number", sites.getNumber());
+	        model.addAttribute("totalPages", sites.getTotalPages());
+	        model.addAttribute("totalElements", sites.getTotalElements());
+	        model.addAttribute("size", sites.getSize());
+			
+			return "sites/siteListeByCotation";
+			
+			}
+		
+		@RequestMapping(value="/user/sitesByNiveau",method=RequestMethod.GET)
+		public String listeSiteByNiveau(ModelMap model, @RequestParam(name="page", defaultValue="0") int page, 
+				@RequestParam(name="size", defaultValue="4") int size ){
+		
+			Page<Site> sites = siteMetier.findAll(PageRequest.of(page, size, Sort.by("siteNiveauDePratique").ascending()));
+		
+			model.addAttribute("sites",sites.getContent());
+			model.addAttribute("page", Integer.valueOf(page));
+			model.addAttribute("number", sites.getNumber());
+	        model.addAttribute("totalPages", sites.getTotalPages());
+	        model.addAttribute("totalElements", sites.getTotalElements());
+	        model.addAttribute("size", sites.getSize());
+			
+			return "sites/siteListeByNiveau";
+			
+			}
+		
+		@RequestMapping(value="/user/sitesByTag",method=RequestMethod.GET)
+		public String listeSiteByTag(ModelMap model, @RequestParam(name="page", defaultValue="0") int page, 
+				@RequestParam(name="size", defaultValue="4") int size ){
+		
+			Page<Site> sites = siteMetier.findAll(PageRequest.of(page, size, Sort.by("siteTag").ascending()));
+		
+			model.addAttribute("sites",sites.getContent());
+			model.addAttribute("page", Integer.valueOf(page));
+			model.addAttribute("number", sites.getNumber());
+	        model.addAttribute("totalPages", sites.getTotalPages());
+	        model.addAttribute("totalElements", sites.getTotalElements());
+	        model.addAttribute("size", sites.getSize());
+			
+			return "sites/siteListeByTag";
+			
+			}
+		
+		@RequestMapping(value="/user/sitesByNom",method=RequestMethod.GET)
+		public String listeSiteByNom(ModelMap model, @RequestParam(name="page", defaultValue="0") int page, 
+				@RequestParam(name="size", defaultValue="4") int size ){
+		
+			Page<Site> sites = siteMetier.findAll(PageRequest.of(page, size, Sort.by("nomSite").ascending()));
+		
+			model.addAttribute("sites",sites.getContent());
+			model.addAttribute("page", Integer.valueOf(page));
+			model.addAttribute("number", sites.getNumber());
+	        model.addAttribute("totalPages", sites.getTotalPages());
+	        model.addAttribute("totalElements", sites.getTotalElements());
+	        model.addAttribute("size", sites.getSize());
+			
+			return "sites/siteListeByNom";
+			
+			}
+		
+		//*************************** READ UN SITE ************************************************
 		
 		
 		@RequestMapping(value="/user/sites/{numSite}", method = RequestMethod.GET)

@@ -2,12 +2,14 @@ package fr.jeanlouispiera.entities;
 
 
 public enum SiteNiveauDePratique {
+	
 	INITIATION ("INITIATION", "Initiation"),
 	DEBUTANT ("DEBUTANT", "Débutant"),
+	ENFANT ("ENFANT", "Enfant"),
 	CONFIRME ("CONFIRME", "Confirmé"),
 	ENGAGE ("ENGAGE", "Engagé"),
-	SPORTIF ("SPORTIF", "Sportif"),
-	ENFANT ("ENFANT", "Enfant");
+	SPORTIF ("SPORTIF", "Sportif");
+	
 
    private String code;
    private String text;
