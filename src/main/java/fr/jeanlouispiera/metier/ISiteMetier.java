@@ -1,8 +1,10 @@
 package fr.jeanlouispiera.metier;
 
+import java.util.List;
 import org.springframework.data.domain.Page;
 
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.repository.query.Param;
 
 import fr.jeanlouispiera.entities.Site;
 
@@ -17,10 +19,6 @@ import fr.jeanlouispiera.entities.SiteTypeRoche;
 
 public interface ISiteMetier {
 	
-/**
- * INTERFACE METIER. CHAQUE METHODE REPRESENTE UN USE CASE DES FONCTIONNALITES DU SITE ESCALADE	
-**/
-
 //1 CRUD SITE
 	
 	
@@ -36,26 +34,27 @@ public interface ISiteMetier {
 	//1-2 READ SITE
 		Site readSite (long numSite);
 	
-	//1-3 UPDATE DE SON ESPACE PERSONNEL 
+	//1-3 UPDATE DE SON ESPACE PERSONNEL ******** [PAR L'UTILISATEUR MEMBRE OU VISITEUR]
 		
 		Site updateSite(Site site);
 		
-	
-		
-	//1-4 DELETE DE SON ESPACE PERSONNEL
-		
+		//1-4 DELETE DE SON ESPACE PERSONNEL ******* [PAR L'UTILISATEUR MEMBRE OU VISITEUR]
 		void deleteSite (Long numSite);
 
-	
-		
-		
-//2 SELECTIONNER TOUS LES SITES EXISTANTS A PARTIR D'UNE VALEUR D'ATTRIBUTE EN COMMUN 
-      
+    
 	//2-1 AFFICHER TOUS LES SITES
-		   
-		   public Page<Site> findAll(Pageable pageable);
+		   public List<Site> displayAllSites();
 
-}
+		   public Page<Site> findAll(Pageable pageable);
+		   
+		   public Page<Site> searchAllByNomSite(String nomSite, Pageable pageable);
+		   
+		   public Page<Site> searchByNomSiteAndSiteMassif(String nomSite, @Param("massif") String massif, Pageable pageable);
+		   
+		   public Page<Site> searchByNomSiteAndSiteMassifAndSiteCotation(String nomSite, @Param("massif") String massif, @Param("cotation") String cotation,Pageable pageable);
+
+		   
+		   }
 
 
 

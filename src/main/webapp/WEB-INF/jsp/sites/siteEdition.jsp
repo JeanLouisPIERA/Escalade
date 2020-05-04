@@ -9,14 +9,14 @@
 
 <head>
 
-<title>Site Creation</title>
-
+<title>Site Edition</title>
+<%@ include file="/WEB-INF/jsp/common/header1.jspf"%>
 </head>
 
 <body> 
 
 <div id= "header1">
-<%@ include file="/WEB-INF/jsp/common/header1.jspf"%>
+
 <%@ include file="/WEB-INF/jsp/common/navigation.jspf"%>
 
 <div class="container-fluid">
@@ -24,7 +24,7 @@
   <div class="col-md-8 col-md-offset-2 ">
   
    <div class="panel panel-primary">
-    <div class="panel-heading">Fiche de création d'un Site</div>
+    <div class="panel-heading">Fiche de mise à jour d'un Site</div>
     
     
     <div class="panel-body">
@@ -41,9 +41,6 @@
 	       <form:errors path="nomSite" cssClass="text-warning" />
       	</fieldset>
       	
-      	
-      	 
-      	
       	<fieldset class="form-group">
       		<form:label path="siteMassif" class="col-auto col-form-label">Massif</form:label>
       		<!-- form: path="siteMassif" type="text" class="form-control"
@@ -55,7 +52,6 @@
 	        </form:select>
 	        </fieldset>
       	
-      	
       	<fieldset class="form-group">
       		<form:label path="siteRegion" class="col-auto col-form-label">Région</form:label>
       		<form:select path="siteRegion" class="form-control">
@@ -66,9 +62,7 @@
 				 </c:forEach>
 	        </form:select>
        </fieldset>
-      	
-      	
-      	
+   	
       	<fieldset class="form-group">
       		<form:label path="siteCotation" class="col-auto col-form-label">Cotation</form:label>
 	      	<form:select path="siteCotation" class="form-control">
@@ -82,7 +76,7 @@
        
         <br>
         <fieldset class="form-row">
-         <sec:authorize access="hasRole('ROLE_ADMIN')">
+         <sec:authorize access="hasAuthority('ADMIN')">
          <fieldset class="form-group">
       		<form:label path="siteTag" class="col-auto col-form-label" >Tag</form:label>
 	      	<form:select path="siteTag" class="form-control">
@@ -101,30 +95,22 @@
 				 </c:forEach>
 	        </form:select>
 	          </fieldset>
-        
-        
-        
-        
-        <fieldset class="form-group">
-      		<form:label path="siteTypeRoche" class="col-auto col-form-label">Type de Roche </form:label>
-	      	<form:select path="siteTypeRoche" class="form-control">
-		     	 <c:forEach var="siteTypeRoche" items="${siteTypeRoche}">
-				    <option value="${siteTypeRoche.getCode()}">${siteTypeRoche.toString()}</option>
-				 </c:forEach>
-	        </form:select>
-        </fieldset>
-	   
-	   
+
+	        <fieldset class="form-group">
+	      		<form:label path="siteTypeRoche" class="col-auto col-form-label">Type de Roche </form:label>
+		      	<form:select path="siteTypeRoche" class="form-control">
+			     	 <c:forEach var="siteTypeRoche" items="${siteTypeRoche}">
+					    <option value="${siteTypeRoche.getCode()}">${siteTypeRoche.toString()}</option>
+					 </c:forEach>
+		        </form:select>
+	        </fieldset>
+	  
 	    </fieldset>
 	    
 	    <br>
       
-     <fieldset class="form-row">
+     	<fieldset class="form-row">
            
-    	
-      	
-      	
-      	
       	<fieldset class="form-group">
       		<form:label path="siteOrientation" class="col-auto col-form-label">Orientation</form:label>
 	      	<form:select path="siteOrientation" class="form-control">
@@ -134,19 +120,17 @@
 	        </form:select>
 	        </fieldset>
       	
-      	<fieldset class="form-group">  
-	       <form:label path="altitude" class="col-auto col-form-label">Altitude
-	       </form:label>
-	       <form:input path="altitude" type="text" class="form-control"
-	        placeholder="entrer un nombre entier" required="required"/>
-	        <!-- span class="input-group-addon">mètres</span-->
-	        <small id="aideUserName" class="form-text">(unités : en mètres)</small>
-	       <form:errors path="altitude" cssClass="text-danger">
-	       !!! SAISIE A CORRIGER : FORMAT SAISI INVALIDE !!!
-	      </form:errors>
+      		<fieldset class="form-group">  
+		       <form:label path="altitude" class="col-auto col-form-label">Altitude
+		       </form:label>
+		       <form:input path="altitude" type="text" class="form-control"
+		        placeholder="entrer un nombre entier" required="required"/>
+		        <!-- span class="input-group-addon">mètres</span-->
+		        <small id="aideUserName" class="form-text">(unités : en mètres)</small>
+		       <form:errors path="altitude" cssClass="text-danger">
+		       !!! SAISIE A CORRIGER : FORMAT SAISI INVALIDE !!!
+		      </form:errors>
 	        </fieldset>
-      	
-      	
       	
       	</fieldset>
 	    
@@ -161,11 +145,8 @@
 	       !!! SAISIE A CORRIGER : FORMAT SAISI INVALIDE !!!
 	       </form:errors>
        </fieldset>
-       
-       
-      <br></br>
-      
-        
+       <br></br>
+           
        <fieldset class="form-group p-2 flex-fill bd-highlight">
 	       <form:label path="hauteurMax" class="col-auto col-form-label">Hauteur Maximum</form:label>
 	       <form:input path="hauteurMax" type="text" class="form-control"
@@ -175,14 +156,9 @@
        !!! SAISIE A CORRIGER : FORMAT SAISI INVALIDE !!!
        </form:errors>
        </fieldset>
-	    
-      
+	   
       <br></br>
-        
-       
-      
-     
-           
+              
       <fieldset class="form-group">
 	      <form:label path="nbVoies" class="col-auto col-form-label">Nombre de Voies</form:label>
 	      <form:input path="nbVoies" type="text" class="form-control"
@@ -207,18 +183,9 @@
       
       
         <br></br>
-      
-	                 
-       
-	   
-	    
-	    
-    <button type="submit" class="btn btn-success">Valider</button>
-  
-   
-  
      
-      
+ 	    <button type="submit" class="btn btn-success">Valider</button>
+     
      </form:form>
     </div>
    </div>

@@ -3,6 +3,7 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+
 <!DOCTYPE html>
 <html>
 
@@ -10,8 +11,9 @@
 <head>
 
 <title>Site Creation</title>
-
+<%@ include file="/WEB-INF/jsp/common/header1.jspf"%>
 </head>
+
 
 <body> 
 
@@ -26,12 +28,10 @@
    <div class="panel panel-primary">
     <div class="panel-heading">Fiche de création d'un Site</div>
     
-    
     <div class="panel-body">
     
      <form:form class="form-inline d-flex bd-highlight" method="POST" modelAttribute="site">
-      <form:hidden path="numSite"/>
-      
+      <form:hidden path="numSite"/>    
         
        <fieldset class="form-row">
        <fieldset class="form-group">
@@ -40,10 +40,7 @@
 	        placeholder="e.g Mont-Blanc" required="required" />
 	       <form:errors path="nomSite" cssClass="text-warning" />
       	</fieldset>
-      	
-      	
-      	 
-      	
+      	      	
       	<fieldset class="form-group">
       		<form:label path="siteMassif" class="col-auto col-form-label">Massif</form:label>
       		<!-- form: path="siteMassif" type="text" class="form-control"
@@ -66,9 +63,7 @@
 				 </c:forEach>
 	        </form:select>
        </fieldset>
-      	
-      	
-      	
+      	      	
       	<fieldset class="form-group">
       		<form:label path="siteCotation" class="col-auto col-form-label">Cotation</form:label>
 	      	<form:select path="siteCotation" class="form-control">
@@ -82,7 +77,7 @@
        
         <br>
         <fieldset class="form-row">
-         <sec:authorize access="hasRole('ROLE_ADMIN')">
+         <sec:authorize access="hasAuthority('ADMIN')">
          <fieldset class="form-group">
       		<form:label path="siteTag" class="col-auto col-form-label" >Tag</form:label>
 	      	<form:select path="siteTag" class="form-control">
@@ -102,9 +97,6 @@
 	        </form:select>
 	          </fieldset>
         
-        
-        
-        
         <fieldset class="form-group">
       		<form:label path="siteTypeRoche" class="col-auto col-form-label">Type de Roche </form:label>
 	      	<form:select path="siteTypeRoche" class="form-control">
@@ -119,12 +111,8 @@
 	    
 	    <br>
       
-     <fieldset class="form-row">
+    	 <fieldset class="form-row">
            
-    	
-      	
-      	
-      	
       	<fieldset class="form-group">
       		<form:label path="siteOrientation" class="col-auto col-form-label">Orientation</form:label>
 	      	<form:select path="siteOrientation" class="form-control">
@@ -146,9 +134,7 @@
 	      </form:errors>
 	        </fieldset>
       	
-      	
-      	
-      	</fieldset>
+      		</fieldset>
 	    
 	    <br>
 	    
@@ -161,7 +147,6 @@
 	       !!! SAISIE A CORRIGER : FORMAT SAISI INVALIDE !!!
 	       </form:errors>
        </fieldset>
-       
        
       <br></br>
       
@@ -178,11 +163,7 @@
 	    
       
       <br></br>
-        
-       
-      
-     
-           
+            
       <fieldset class="form-group">
 	      <form:label path="nbVoies" class="col-auto col-form-label">Nombre de Voies</form:label>
 	      <form:input path="nbVoies" type="text" class="form-control"
@@ -207,18 +188,9 @@
       
       
         <br></br>
-      
-	                 
-       
-	   
-	    
-	    
-    <button type="submit" class="btn btn-success">Valider</button>
-  
-   
-  
      
-      
+   	   <button type="submit" class="btn btn-success">Valider</button>
+   
      </form:form>
     </div>
    </div>

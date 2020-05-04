@@ -1,5 +1,6 @@
 package fr.jeanlouispiera.metier;
 
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.data.domain.Page;
@@ -25,12 +26,17 @@ public class SiteMetierImpl implements ISiteMetier{
 	@Autowired
 	private ISiteRepository iSiteRepository; 
 
-	
+	/**
+	 * Cette méthode permet de persister le site en base de données
+	 */
 	@Override
 	public Site addSite(Site site) {
 		return iSiteRepository.save(site);
 	}
 	
+	/**
+	 * Cette méthode permet de créer un jeu de données Site dans le main au lancement de l'application
+	 */
 	@Override
 	public Site createSite(String nomSite, int altitude, int nbVoies, int hauteurMin, int hauteurMax, int longueurTotaleVoies,
 			SiteNiveauDePratique siteNiveauDePratique, SiteCotation siteCotation, SiteMassif siteMassif,
@@ -43,7 +49,9 @@ public class SiteMetierImpl implements ISiteMetier{
 		
 	}
 	
-
+	/**
+	 * Cette méthode permet de récupérer les informations en base de données sur un site
+	 */
 	@Override
 	public Site readSite(long numSite) {
 		Site s = iSiteRepository.findById(numSite).get();
@@ -51,39 +59,71 @@ public class SiteMetierImpl implements ISiteMetier{
 		return s;
 	}
 	
+	/**
+	 * Cette méthode permet de persister en base de données les mise à jour d'un site
+	 */
 	@Override
 	public Site updateSite(Site site) {
 		return iSiteRepository.save(site);
 	}
 
+	/**
+	 * Cette méthode permet de supprimer un site	
+	 */
 	@Override
 	public void deleteSite(Long numSite) {
 		iSiteRepository.deleteById(numSite);
 		
 	}
 	
-	//********SELECTIONNER LES SITES A PARTIR D'UN ATTRIBUT COMMUN ******** 
+	
+	//*******AFFICHER ET SELECTIONNER LES SITES *****************
+		
+	/**
+	 * Cette méthode permet de récupérer tous les sites persistés en base de données
+	 */
+	@Override
+	public List<Site> displayAllSites() {
+		List<Site> s = iSiteRepository.findAll();
+		return s;
+	}
 
-
+	/**
+	 * Cette méthode permet de récupérer tous les sites persistés en base de données sous forme de page
+	 */
 	@Override
 	public Page<Site> findAll(Pageable pageable) {
 		Page<Site> allSites = iSiteRepository.findAll(pageable);
 		return allSites;
 	}
+	
+	/**
+	 * Cette méthode permet de rechercher un site par son nom 
+	 */
+	@Override
+	public Page<Site> searchAllByNomSite(String nomSite, Pageable pageable) {
+		Page<Site> sites = iSiteRepository.findByNomSite(nomSite, pageable);
+		return sites;
+	}
 
-	
+    /**
+     * Cette méthode permet de rechercher un site par son nom et par le massif où il se trouve
+     */
+	@Override
+	public Page<Site> searchByNomSiteAndSiteMassif(String nomSite,String massif, Pageable pageable) {
+		
+		Page<Site> sites = iSiteRepository.findBySiteMassifAndNomSiteNamedParams(SiteMassif.getSiteMassifByText(massif), nomSite,pageable);
+		return sites;
+	}
 
-
+	/**
+	 * Cette méthode permet de rechercher un site par son nom/son massif et sa cotation	
+	 */
+	@Override
+	public Page<Site> searchByNomSiteAndSiteMassifAndSiteCotation(String nomSite, String massif, String cotation,
+			Pageable pageable) {
+			Page<Site> sites = iSiteRepository.findBySiteMassifAndNomSiteAndCotationNamedParams(SiteMassif.getSiteMassifByText(massif), nomSite, SiteCotation.getSiteCotationByText(cotation), pageable);
+		return sites;
+	}
 	
-	
-
-	
-
-	
-
-	
-	
-	
-	
-
 }

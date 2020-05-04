@@ -34,6 +34,16 @@ public static SiteCotation getSiteCotationByCode(String code) {
 	return null;
 }
 
+public static SiteCotation getSiteCotationByText(String text) {
+	for (SiteCotation siteCotation : SiteCotation.values()) {
+		if(siteCotation.text.equals(text)){
+			return siteCotation;
+		}
+	}
+	return null;
+}
+
+
 public String getCode() {
 	return code;
 }

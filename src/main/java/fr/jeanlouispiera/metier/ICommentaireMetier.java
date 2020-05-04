@@ -9,20 +9,17 @@ import org.springframework.data.domain.Pageable;
 import fr.jeanlouispiera.entities.Commentaire;
 import fr.jeanlouispiera.entities.Site;
 import fr.jeanlouispiera.entities.Topo;
-import fr.jeanlouispiera.entities.Utilisateur;
+import fr.jeanlouispiera.entities.User;
+
 
 public interface ICommentaireMetier {
-	
-	/**
-	 * INTERFACE METIER. CHAQUE METHODE REPRESENTE UN USE CASE DES FONCTIONNALITES DU SITE ESCALADE	
-	**/
 
 //********************** CRUD COMMENTAIRE GENERAL SUR UN SITE ********************** 
 
 //1-CREATE UN COMMENTAIRE GENERAL CONCERNANT LA FICHE OFFICIELLE D'UN SITE ****** 
 	
 	Commentaire createCommentaire(String titreCommentaire, Date dateCommentaire,String contenuCommentaire,
-			Utilisateur utilisateur, Topo topo, Site site);
+			User user, Topo topo, Site site);
 		
 	Commentaire addCommentaire(Commentaire commentaire);
 

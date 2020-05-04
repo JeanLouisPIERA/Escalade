@@ -3,33 +3,28 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+
 <!DOCTYPE html>
+
 <html>
 
 
 <head>
 
 <title>Site Vue</title>
-
+<%@ include file="/WEB-INF/jsp/common/header1.jspf"%>
 </head>
 
 <body> 
 
 <div id= "header1">
-<%@ include file="/WEB-INF/jsp/common/header1.jspf"%>
+
 <%@ include file="/WEB-INF/jsp/common/navigation.jspf"%>
 
-
-
-
-
 <div class="container-fluid">
+
 <div class="row d-flex justify-content-center">
-
-
-
-  
-  <div class="container col-md-4 col-md-offset-0">
+<div class="container col-md-4 col-md-offset-0">
  <div class="panel panel-primary ">
  
   <div class="panel-heading">
@@ -96,20 +91,12 @@
     </tbody>
 </table>
   
+</div>
  </div>
-  </div>
-  </div>
+ </div>
    
-
-
-
-
-
- 
-
-  <div class="container col-md-5 col-md-offset-0" >
-  
-  
+ <div class="container col-md-5 col-md-offset-0" >
+    
  <div class="panel panel-primary ">
  
   <div class="panel-heading">
@@ -121,7 +108,7 @@
     <thead>		  	  	 
     			 <tr>
 				      
-				      <th>Titre</th>
+				      <th>Auteur</th>
 				      <th>Contenu</th>
 				      <th>Date</th>
 			     </tr>
@@ -129,90 +116,89 @@
 			     <tbody>
    				 <c:forEach var="commentaire" items="${commentaires}">
    				 <tr>
-			          
-			          <td class="col-md-1">${commentaire.titreCommentaire}</td>
+			          <td class="col-md-1">${commentaire.user.getUsername()}</td>
 			          <td class="col-md-2">${commentaire.contenuCommentaire}</td>
 			          <td class="col-md-1">${commentaire.dateCommentaire}</td>
 			        
-			          
-		        	  <sec:authorize access="hasRole('ROLE_ADMIN')">
+			          <sec:authorize access="hasAuthority('ADMIN')">
+		        	   <td class="col-md-1">
+				        <a  type="button" class="btn btn-warning" 
+				        href="/user/sites/update/${commentaire.site.getNumSite()}/${commentaire.numCommentaire}">Modération</a></td>
+			          </sec:authorize>
+		        	  
+		        	  
+		        	  <sec:authorize access="hasAuthority('ADMIN')">
 		        	  <td class="col-md-1">
-		        	  	
 			          	<a type="button"  class="btn btn-danger" 
 			        	href="/user/sites/${site.numSite}/${commentaire.numCommentaire}">Suppression</a>
-			        	
 			         </td>
 			          </sec:authorize>
 		        	   
 		        	  
-    			 </tr>
+    				 </tr>
    				</c:forEach>
-				</tbody>
-</table>
-  
-
-  
-  
-  
-  
- </div>
+			</tbody>
+		</table>
+	 </div>
  
   </div>
   
-  
+  <c:if test="${moderation != 'true'}">
   <div class="panel panel-primary">
     <div class="panel-heading">Déposer un nouveau commentaire</div>
+	    <div class="panel-body">
     
-    
-    <div class="panel-body">
-    
-    
-    
-     <form:form class="form-inline d-flex bd-highlight" method="POST" modelAttribute="commentaire">
-      <form:hidden path="site"/>
-      
-      <fieldset class="form-row">
-       <fieldset class="form-group">
-	       <form:label path="titreCommentaire" class="col-auto col-form-label">Titre</form:label>
-	       <form:input path="titreCommentaire" type="text" class="form-control"
-	        placeholder="e.g Un site Whaouh !" required="required" maxlength="20"/>
-	       <form:errors path="titreCommentaire" cssClass="text-warning" />
-      	</fieldset>
-        
-        <br></br>
-        
-       <fieldset class="form-group">
-	       <form:textarea path="contenuCommentaire" rows="2" cols="80"
-	        placeholder="Merci de votre commentaire" required="required" maxlength="100"/>
-	       <form:errors path="contenuCommentaire" cssClass="text-warning" />
-      	</fieldset>
-      	<br>
-      	</fieldset>
-      	
-      	<button type="submit" class="btn-sm btn-success">Validation</button>
-  </form:form>
-  </div>
-  </div>
-  
-  
-  
-  </div>
-  
-  
-    <div class="container col-md-3 col-md-offset-0" >
-  
-  
+		     <form:form class="form-inline d-flex bd-highlight" method="POST" modelAttribute="commentaire">
+		      <form:hidden path="site"/>
+		         
+		         <fieldset class="form-row">
+		         
+		       <fieldset class="form-group">
+			       <form:textarea path="contenuCommentaire" rows="2" cols="70"
+			        placeholder="Merci de votre commentaire" required="required" maxlength="100"/>
+			       <form:errors path="contenuCommentaire" cssClass="text-warning" />
+		      	</fieldset>
+		      	</fieldset>
+		      	
+		      	<button type="submit" class="btn-sm btn-success">Validation</button>
+		  </form:form>
+  		</div>
+  		</div>
+  </c:if>
+  <c:if test="${moderation == 'true'}">
+		        	   
+		  <div class="panel panel-primary">
+		    <div class="panel-heading">Modérer le commentaire du ${commentaire.dateCommentaire} de ${commentaire.user.getUsername()}</div>
+		    		    
+		    <div class="panel-body">
+		    
+		     <form:form class="form-inline d-flex bd-highlight" method="POST" modelAttribute="commentaire">
+		      <form:hidden path="site.numSite"/>
+		         
+		         <fieldset class="form-row">
+		         
+		       <fieldset class="form-group">
+			       <form:textarea path="contenuCommentaire" rows="2" cols="70"
+			        placeholder="Merci de votre commentaire" required="required" maxlength="100"/>
+			       <form:errors path="contenuCommentaire" cssClass="text-warning" />
+		      	</fieldset>
+		      	</fieldset>
+		      	
+		      	<button type="submit" class="btn-sm btn-success">Modération</button>
+		 	 </form:form>
+		  </div>
+		 </div>
+	  </c:if>
+ </div>
+ <div class="container col-md-3 col-md-offset-0" >
  <div class="panel panel-primary ">
- 
   <div class="panel-heading">
    <h5>Liste des Topos du site</h5>
   </div>
-  
   <div class="panel-body">
    <table class="table table-striped table-condensed table-bordered">
     <thead>		  	  	 
-    			 <tr>
-				      
+		<tr>
 				      <th>Nom</th>
 				      <th>Statut</th>
 				      
@@ -225,55 +211,25 @@
 			          <td class="col-md-1">${topo.nomTopo}</td>
 			          <td class="col-md-1">${topo.topoStatut.getText()}</td>
 			          
-			        
-			          
-		        	  
 		        	  <td class="col-md-1">
-		        	  	
 			          	<a type="button"  class="btn btn-success" 
-			        	href="/user/sites">? + d'infos</a>
-			        	
-			         </td>
-			          
-		        	   
-		        	  
+			        	href="/user/topos/${topo.codeTopo}">? + d'infos</a>
+			          </td>	        	  
     			 </tr>
-   				</c:forEach>
-				</tbody>
-</table>
-  
-
-  
-  
-  
-  
+   			</c:forEach>
+		</tbody>
+	</table>
+  </div>
  </div>
- 
-  </div>
-  
-  
-
-  
-  
-  
-  </div>
-  
-  
-  
-  
-   
 </div>
 </div>
-
-
+</div>
 
 <div id="footer">
 <%@ include file="/WEB-INF/jsp/common/footer1.jspf"%>
 </div>
 
 </div>
-
-
 
 </body>
 

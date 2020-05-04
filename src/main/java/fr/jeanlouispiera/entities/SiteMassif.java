@@ -1,13 +1,16 @@
 package fr.jeanlouispiera.entities;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public enum SiteMassif {
 	
 	ALP ("ALP", "Alpes"),
-	JUR ("JUR", "Jura"), 
-	MAC ("MAC", "Massif Central"),
-	ARD ("ARD", "Monts d'Ardèche"),
 	PYR ("PYR", "Pyrénées"),
-	VOS ("VOS", "Vosges");
+	MAC ("MAC", "Massif Central"),
+	VOS ("VOS", "Vosges"),
+	JUR ("JUR", "Jura"), 
+	ARD ("ARD", "Monts d'Ardèche");
 	
    private String code;
    private String text;
@@ -16,7 +19,15 @@ private SiteMassif(String code, String text) {
 	this.code = code;
 	this.text = text;
 }
+
+
    
+private SiteMassif(String text) {
+	this.text = text;
+}
+
+
+
 public static SiteMassif getSiteMassifByCode(String code) {
 	for (SiteMassif siteMassif : SiteMassif.values()) {
 		if(siteMassif.code.equals(code)){
@@ -25,6 +36,18 @@ public static SiteMassif getSiteMassifByCode(String code) {
 	}
 	return null;
 }
+
+
+public static SiteMassif getSiteMassifByText(String text) {
+	for (SiteMassif siteMassif : SiteMassif.values()) {
+		if(siteMassif.text.equals(text)){
+			return siteMassif;
+			
+		}
+	}
+	return null;
+}
+
 
 public String getCode() {
 	return code;
@@ -60,6 +83,7 @@ public String toString() {
 	return super.toString();
 	
 	}
+
 }
 	
 	

@@ -1,25 +1,6 @@
 
-<script src="/webjars/jquery/3.4.1/jquery.min.js"></script>
-<script src="/webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-
-
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-       <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-   <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-
-
-<link rel="stylesheet" href="/webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
-<c:url value="/css/main.css" var="jstlCss" />
-<link href="${jstlCss}" rel="stylesheet" />
-
-
-
-
-
-
+ <link rel="stylesheet" href="/webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
+ 
 <style>
 <!--style type="text/css"-->
 .body {
@@ -31,15 +12,44 @@
 	padding-top : 80 px;
 	padding-bottom : 80 px;
 }
-.navbar-nav {
-background-color: rgba(0, 120, 240, 0.5);
- color: black;
+
+/* Classe principale de la barre de navigation */
+.navbar-default {
+ /* Couleur de fond de la barre de navigation */
+ background-color: rgba(0, 120, 240, 0.5);
+ border-color: rgba(0, 120, 240, 0.5);
+}
+/* Couleur des titres affichés dans la barre */
+.navbar-default .navbar-brand {
+ color: rgb(255, 255, 255);
+}
+/* Couleur utilisée lors du passage de la souris sur un titre de la barre */
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus {
+ color: #5E5E5E;
+}
+/* Couleur utilisée pour les liens */
+.navbar-default .navbar-nav > li > a {
+ color: rgb(255, 255, 255);
+}
+.navbar-default .navbar-right {
+ color: rgb(255, 255, 255);
+}
+.navbar-default .navbar-right >li > div > a {
+ color: rgb(255, 255, 255);
 }
 
-
-.navbar-collapse {
-background-color: rgba(0, 120, 240, 0.5);
- color: black;
+/* Couleur utilisée pour les liens lorsque la souris passe dessus */
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+ color: #333;
+}
+/* Couleur utilisée pour le lien actif (celui qui est affiché sur la page) */
+.navbar-default .navbar-nav > .active > a, 
+.navbar-default .navbar-nav > .active > a:hover, 
+.navbar-default .navbar-nav > .active > a:focus {
+ color: #555;
+ background-color: rgba(0, 120, 240, 0.5);
 }
 
 .footer {
@@ -54,7 +64,6 @@ background-color: rgba(0, 120, 240, 0.5);
  text-align: center;
 }
 </style>
-
 
 
 

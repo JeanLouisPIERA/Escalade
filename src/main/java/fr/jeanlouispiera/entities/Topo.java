@@ -5,6 +5,7 @@ import java.io.Serializable;
 import java.util.Collection;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -19,6 +20,7 @@ public class Topo implements Serializable {
 	private String descriptionTopo;
 	private String editeur;
 	private String dateParution; 
+	private String adresseMailUser;
 	private int largeur;
 	private int longueur;
 	private String langue;
@@ -28,10 +30,12 @@ public class Topo implements Serializable {
 	private Collection <Commentaire> commentaires;
 	@ManyToOne
 	@JoinColumn(name="USER")
-	private Utilisateur utilisateur;
+	private User user;
 	@ManyToOne
 	@JoinColumn(name="SITE")
 	private Site site;
+	@OneToMany(mappedBy="topo", fetch=FetchType.LAZY)
+	private Collection<Reservation> reservations;
 	
 	
 	public Topo() {
@@ -46,34 +50,135 @@ public class Topo implements Serializable {
 		super();
 		this.codeTopo = codeTopo;
 	}
+	
 
-
-
-
-	public Topo(Long codeTopo, String nomTopo, String descriptionTopo, String editeur, String dateParution, int largeur,
-			int longueur, String langue, int nbPages, TopoStatut topoStatut, Utilisateur utilisateur, Site site) {
+	
+	public Topo(Long codeTopo, String nomTopo, String descriptionTopo, String editeur, String dateParution,
+			String adresseMailUser, int largeur, int longueur, String langue, int nbPages, TopoStatut topoStatut,
+			Collection<Commentaire> commentaires, User user, Site site) {
 		super();
 		this.codeTopo = codeTopo;
 		this.nomTopo = nomTopo;
 		this.descriptionTopo = descriptionTopo;
 		this.editeur = editeur;
 		this.dateParution = dateParution;
+		this.adresseMailUser = adresseMailUser;
 		this.largeur = largeur;
 		this.longueur = longueur;
 		this.langue = langue;
 		this.nbPages = nbPages;
 		this.topoStatut = topoStatut;
-		this.utilisateur = utilisateur;
+		this.commentaires = commentaires;
+		this.user = user;
+		this.site = site;
+	}
+
+	public Topo(String nomTopo, String descriptionTopo, String editeur, String dateParution, String adresseMailUser,
+			int largeur, int longueur, String langue, int nbPages, TopoStatut topoStatut,
+			Collection<Commentaire> commentaires, User user, Site site) {
+		super();
+		this.nomTopo = nomTopo;
+		this.descriptionTopo = descriptionTopo;
+		this.editeur = editeur;
+		this.dateParution = dateParution;
+		this.adresseMailUser = adresseMailUser;
+		this.largeur = largeur;
+		this.longueur = longueur;
+		this.langue = langue;
+		this.nbPages = nbPages;
+		this.topoStatut = topoStatut;
+		this.commentaires = commentaires;
+		this.user = user;
+		this.site = site;
+	}
+
+
+	public Topo(Long codeTopo, String nomTopo, String descriptionTopo, String editeur, String dateParution,
+			String adresseMailUser, int largeur, int longueur, String langue, int nbPages, TopoStatut topoStatut,
+			Collection<Commentaire> commentaires, User user, Site site, Collection<Reservation> reservations) {
+		super();
+		this.codeTopo = codeTopo;
+		this.nomTopo = nomTopo;
+		this.descriptionTopo = descriptionTopo;
+		this.editeur = editeur;
+		this.dateParution = dateParution;
+		this.adresseMailUser = adresseMailUser;
+		this.largeur = largeur;
+		this.longueur = longueur;
+		this.langue = langue;
+		this.nbPages = nbPages;
+		this.topoStatut = topoStatut;
+		this.commentaires = commentaires;
+		this.user = user;
+		this.site = site;
+		this.reservations = reservations;
+	}
+
+
+
+
+	public Topo(String nomTopo, String descriptionTopo, String editeur, String dateParution, String adresseMailUser,
+			int largeur, int longueur, String langue, int nbPages, TopoStatut topoStatut,
+			Collection<Commentaire> commentaires, User user, Site site, Collection<Reservation> reservations) {
+		super();
+		this.nomTopo = nomTopo;
+		this.descriptionTopo = descriptionTopo;
+		this.editeur = editeur;
+		this.dateParution = dateParution;
+		this.adresseMailUser = adresseMailUser;
+		this.largeur = largeur;
+		this.longueur = longueur;
+		this.langue = langue;
+		this.nbPages = nbPages;
+		this.topoStatut = topoStatut;
+		this.commentaires = commentaires;
+		this.user = user;
+		this.site = site;
+		this.reservations = reservations;
+	}
+
+
+	public Topo(Long codeTopo, String nomTopo, String descriptionTopo, String editeur, String dateParution,
+			String adresseMailUser, int largeur, int longueur, String langue, int nbPages, TopoStatut topoStatut,
+			User user, Site site) {
+		super();
+		this.codeTopo = codeTopo;
+		this.nomTopo = nomTopo;
+		this.descriptionTopo = descriptionTopo;
+		this.editeur = editeur;
+		this.dateParution = dateParution;
+		this.adresseMailUser = adresseMailUser;
+		this.largeur = largeur;
+		this.longueur = longueur;
+		this.langue = langue;
+		this.nbPages = nbPages;
+		this.topoStatut = topoStatut;
+		this.user = user;
+		this.site = site;
+	}
+
+	public Topo(String nomTopo, String descriptionTopo, String editeur, String dateParution, String adresseMailUser,
+			int largeur, int longueur, String langue, int nbPages, TopoStatut topoStatut, User user, Site site) {
+		super();
+		this.nomTopo = nomTopo;
+		this.descriptionTopo = descriptionTopo;
+		this.editeur = editeur;
+		this.dateParution = dateParution;
+		this.adresseMailUser = adresseMailUser;
+		this.largeur = largeur;
+		this.longueur = longueur;
+		this.langue = langue;
+		this.nbPages = nbPages;
+		this.topoStatut = topoStatut;
+		this.user = user;
 		this.site = site;
 	}
 
 
 
-	
-
 
 	public Topo(String nomTopo, String descriptionTopo, String editeur, String dateParution, int largeur, int longueur,
-			String langue, int nbPages, TopoStatut topoStatut, Utilisateur utilisateur, Site site) {
+			String langue, int nbPages, TopoStatut topoStatut, User user, Site site) {
 		super();
 		this.nomTopo = nomTopo;
 		this.descriptionTopo = descriptionTopo;
@@ -84,11 +189,19 @@ public class Topo implements Serializable {
 		this.langue = langue;
 		this.nbPages = nbPages;
 		this.topoStatut = topoStatut;
-		this.utilisateur = utilisateur;
+		this.user = user;
 		this.site = site;
 	}
-	
-	
+
+
+
+
+	public Topo(User user) {
+		super();
+		this.user = user;
+	}
+
+
 
 
 	public Topo(Site site) {
@@ -201,14 +314,33 @@ public class Topo implements Serializable {
 	}
 
 
-	public Utilisateur getUtilisateur() {
-		return utilisateur;
+	
+
+
+	public User getUser() {
+		return user;
 	}
 
 
-	public void setUtilisateur(Utilisateur utilisateur) {
-		this.utilisateur = utilisateur;
+
+
+	public void setUser(User user) {
+		this.user = user;
 	}
+	
+	
+	public Long getCodeTopo() {
+		return codeTopo;
+	}
+
+
+
+
+	public void setCodeTopo(Long codeTopo) {
+		this.codeTopo = codeTopo;
+	}
+
+
 
 
 	public Site getSite() {
@@ -218,6 +350,34 @@ public class Topo implements Serializable {
 
 	public void setSite(Site site) {
 		this.site = site;
+	}
+
+
+
+
+	public Collection<Reservation> getReservations() {
+		return reservations;
+	}
+
+
+
+
+	public void setReservations(Collection<Reservation> reservations) {
+		this.reservations = reservations;
+	}
+
+
+
+
+	public String getAdresseMailUser() {
+		return adresseMailUser;
+	}
+
+
+
+
+	public void setAdresseMailUser(String adresseMailUser) {
+		this.adresseMailUser = adresseMailUser;
 	}
 	
 	

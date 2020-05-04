@@ -3,8 +3,8 @@ package fr.jeanlouispiera.entities;
 public enum TopoStatut {
 	
 	DIS ("DIS", "Disponible"),
-	DEM ("DEM", "Demande en Cours"),
-	PEC ("PEC", "Pret En Cours");
+	NDIS ("NDIS", "Non Disponible");
+	
 	
 	private String code;
 	private String text;
@@ -43,10 +43,8 @@ public enum TopoStatut {
 	public String toString() {
 		if(this==DIS) {
 			return"Disponible";
-		}else if (this==DEM) {
-			return"Demande en Cours";
-		}else if (this==PEC) {
-			return"Prêt en Cours";
+		}else if (this==NDIS) {
+			return"Non Disponible";
 		}
 		return super.toString();
 		

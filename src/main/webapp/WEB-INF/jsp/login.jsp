@@ -1,90 +1,62 @@
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
-<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+
 <!DOCTYPE html>
-<html>
 
+<html lang="en">
+  <head>
+      <meta charset="utf-8">
+      <title>Login Page</title>
+		
+		<link href="webjars/bootstrap/3.3.7/css/bootstrap.min.css"
+        rel="stylesheet">
+		
+  </head>
 
-<head>
-
-<title>Login Page</title>
-
-</head>
-
-<body> 
-
-<div id= "header1">
-<%@ include file="common/header1.jspf"%>
-
-
-
-<div class="container">
+  <body>
+  
+  	<div id= "header">
+	<%@ include file="common/header.jspf"%>
+      
+    <div class="container">
 
     <div class="container-fluid d-flex center-block">
     <div class="row d-flex justify-content-center">
+  	<div class="col-md-6 col-md-offset-3">
+  	<div class="wrapper">
+    
+      <form method="POST" action="${contextPath}/login" class="form-signin">
+        <h2 class="form-heading">Identifiez-vous</h2>
 
-
-<div class="col-md-3 col-md-offset-4 spacer40">
-<div class="panel panel-primary">
-<div class="panel-heading">Authentification</div>
-<div class="panel-body">
-<form action="/login" method="post">  
-
-  <div>
-
-   <input type="text" name="username"
-
-    placeholder="User Name" />
-
-  </div>
-
-  <div>
-
-   <input type="password" name="password"
-
-    placeholder="Password" />
-
-  </div>
-
-  <div>
-
-   <input type="submit" value="Sign In" class="button red small" />
-
-  </div>
-
-  <c:if test="${param.error ne null}">
-
-   <div class="alert-danger">Invalid username and password.</div>
-
-  </c:if>
-
-  <c:if test="${param.logout ne null}">
-
-   <div class="alert-normal">You have been logged out.</div>
-
-  </c:if>  
-
-  <input type="hidden" name="${_csrf.parameterName}"
-
-   value="${_csrf.token}" />
-
- </form>
-
-</div>
-</div>
-</div>
-</div>
-</div>
-
-</div>
+        <div class="form-group ${error != null ? 'has-error' : ''}">
+            <span>${message}</span>
+            <input name="username" type="text" class="form-control" placeholder="Votre nom d'utilisateur"
+                   autofocus="true"/>
+                   <br>
+            <input name="password" type="password" class="form-control" placeholder="Votre mot de passe"/>
+            <span>${error}</span>
+            <br>
+            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+			
+            <button class="btn btn-sm btn-primary btn-block" type="submit">Valider</button>
+            <h6 class="text-center"><a href="${contextPath}/registration">Pas encore inscrit ? Cliquez ici pour créer votre compte !</a></h6>
+        </div>
+      </form>
+      </div>
+    </div>
+    
  </div>
-
-<div id="footer">
+ </div>
+ <div id="footer">
 <%@ include file="common/footer1.jspf"%>
 </div>
-
-</body>
-
+ </div>  
+ 
+ <script src="webjars/jquery/3.2.1/jquery.min.js"></script>
+        <script src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    </div>
+  
+  </body>
+  
 </html>
