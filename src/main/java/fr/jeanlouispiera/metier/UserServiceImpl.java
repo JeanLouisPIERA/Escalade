@@ -43,8 +43,11 @@ public User findByUsername(String username) {
  * Cette méthode permet de créer un jeu de données Utilisateur dans le Main au moment du lancement de l'appli 
  */
 @Override
-public User createUser(String username, String adresseMail) {
-	User u = new User(username, adresseMail);
+public User createUser(String username) {
+	User u = new User(username);
+	Role r = roleRepository.findByName(RoleEnum.USER);
+	u.setRole(r);
+	u.setPassword("$2a$10$8kVCmqZNmEu7ihwunzaNN.KxnFMn1HuDmBcj1O.mOK24gJ15C5b06");
 	userRepository.save(u);
 	return u;
 }

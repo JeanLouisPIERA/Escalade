@@ -21,7 +21,7 @@ public interface ITopoMetier {
 	
 		//1-1 CREATE D'UN TOPO
 			Topo createTopo(String nomTopo, String descriptionTopo, String editeur, String dateParution, int largeur, int longueur,
-					String langue, int nbPages, TopoStatut topoStatut, User user, Site site) ;
+					String langue, int nbPages, TopoStatut topoStatut, User user, Site site, String adresseMailUser) ;
 			
 			void addUserToTopo(Topo topo,User user);
 			

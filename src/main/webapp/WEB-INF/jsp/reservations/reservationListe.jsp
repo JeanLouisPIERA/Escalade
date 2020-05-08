@@ -105,9 +105,11 @@
 							          <td>${demandeReservation.user.getUsername()}</td>
 							          <td>${demandeReservation.topo.topoStatut.getText()}</td>
 							          <td>${demandeReservation.reservationReponse.getText()}</td>
+							          <c:if test="${demandeReservation.topo.topoStatut.getCode() == 'DIS'}">
 							          <td>
 								        <a  type="button" class="btn btn-success" 
 								        href="/user/reservations/${demandeReservation.numReservation}">Accord</a></td>
+								      </c:if>  
 				    			 </tr>
 			   				</c:forEach>
 						</tbody>
