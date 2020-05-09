@@ -5,7 +5,7 @@ package fr.jeanlouispiera.entities;
 public enum SiteCotation {
 	
 	C3 ("C3", "3"),
-	C31("C31+", "3+"),
+	C31("C31", "3+"),
 	C41("C41", "4a"),
 	C42("C42", "4b"),
 	C43("C43", "4c"),

@@ -46,6 +46,7 @@
       		<!-- form: path="siteMassif" type="text" class="form-control"
 	        placeholder="Massif"/-->
 	      	<form:select path="siteMassif" class="form-control">
+	      		 <option value="${site.siteMassif.getCode()}">${site.siteMassif.toString()}</option>
 		     	 <c:forEach var="siteMassif" items="${siteMassif}">
 				    <option value="${siteMassif.getCode()}">${siteMassif.toString()}</option>
 				 </c:forEach>
@@ -57,6 +58,7 @@
       		<form:select path="siteRegion" class="form-control">
       		<!-- form:input path="siteRegion" type="text" class="form-control"
 	        placeholder="Region" required="required" /-->
+	        	 <option value="${site.siteRegion.getCode()}">${site.siteRegion.toString()}</option>
 		     	 <c:forEach var="siteRegion" items="${siteRegion}">
 				    <option value="${siteRegion.getCode()}">${siteRegion.toString()}</option>
 				 </c:forEach>
@@ -66,6 +68,7 @@
       	<fieldset class="form-group">
       		<form:label path="siteCotation" class="col-auto col-form-label">Cotation</form:label>
 	      	<form:select path="siteCotation" class="form-control">
+	      		<option value="${site.siteCotation.getCode()}">${site.siteCotation.toString()}</option>
 		     	 <c:forEach var="siteCotation" items="${siteCotation}">
 				    <option value="${siteCotation.getCode()}">${siteCotation.toString()}</option>
 				 </c:forEach>
@@ -80,6 +83,7 @@
          <fieldset class="form-group">
       		<form:label path="siteTag" class="col-auto col-form-label" >Tag</form:label>
 	      	<form:select path="siteTag" class="form-control">
+	      		 <option value="${site.siteTag.getCode()}">${site.siteTag.toString()}</option>
 		     	 <c:forEach var="siteTag" items="${siteTag}">
 				    <option value="${siteTag.getCode()}">${siteTag.toString()}</option>
 				 </c:forEach>
@@ -87,9 +91,19 @@
         </fieldset>
         </sec:authorize>
         
+        <sec:authorize access="hasAuthority('USER')">
+         <fieldset class="form-group">
+      		<form:label path="siteTag" class="col-auto col-form-label" >Tag</form:label>
+	      	<form:select path="siteTag" class="form-control">
+	      		 <option value="${site.siteTag.getCode()}">${site.siteTag.toString()}</option>
+	        </form:select>
+        </fieldset>
+        </sec:authorize>
+        
          <fieldset class="form-group">
       		<form:label path="siteNiveauDePratique" class="col-auto col-form-label">Niveau de Pratique</form:label>
 	      	<form:select path="siteNiveauDePratique" class="form-control">
+	      		 <option value="${site.siteNiveauDePratique.getCode()}">${site.siteNiveauDePratique.toString()}</option>
 		     	 <c:forEach var="siteNiveauDePratique" items="${siteNiveauDePratique}">
 				    <option value="${siteNiveauDePratique.getCode()}">${siteNiveauDePratique.toString()}</option>
 				 </c:forEach>
@@ -99,6 +113,7 @@
 	        <fieldset class="form-group">
 	      		<form:label path="siteTypeRoche" class="col-auto col-form-label">Type de Roche </form:label>
 		      	<form:select path="siteTypeRoche" class="form-control">
+		      		 <option value="${site.siteTypeRoche.getCode()}">${site.siteTypeRoche.toString()}</option>
 			     	 <c:forEach var="siteTypeRoche" items="${siteTypeRoche}">
 					    <option value="${siteTypeRoche.getCode()}">${siteTypeRoche.toString()}</option>
 					 </c:forEach>
@@ -114,6 +129,7 @@
       	<fieldset class="form-group">
       		<form:label path="siteOrientation" class="col-auto col-form-label">Orientation</form:label>
 	      	<form:select path="siteOrientation" class="form-control">
+	      		 <option value="${site.siteOrientation.getCode()}">${site.siteOrientation.toString()}</option>
 		     	 <c:forEach var="siteOrientation" items="${siteOrientation}">
 				    <option value="${siteOrientation.getCode()}">${siteOrientation.toString()}</option>
 				 </c:forEach>
