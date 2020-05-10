@@ -16,7 +16,8 @@ de suivre les réponses à ses demandes de réservation et de répondre aux soll
 communiquées en cas d'accord. Seuls les administrateurs ont la possibilité de supprimer un site ou un topo ou de modérer les 
 commentaires déposés par les membres. Le site est sécurisé.
 
-# Technologies : Ce projet a été écrit en Java avec JEE et la version 2.3.0.M2 de Springboot. Toutes les méthodes sont commentées en 
+# Technologies : 
+Ce projet a été écrit en Java avec JEE et la version 2.3.0.M2 de Springboot. Toutes les méthodes sont commentées en 
 Javadoc.
 
 # Prérequis : 
