@@ -28,6 +28,18 @@ L'environnement d'installation minimum est :
 
 # Installation :
 - créer une base de données vide MySQL sous le nom amis_escalade
+	- la structure des tables est créée par le framework Hibernate dans le container Springboot au lancement de l'application 
+	qui génère automatiquement un premier jeu de données de démo
+	- avant le premier lancement de l'application, modifier les informations se trouvant dans le fichier 
+	src/main/resources/application.properties les informations suivantes concernant votre base de données :
+		- spring.datasource.username = root (si ce n'est pas le cas)
+		- spring.datasource.password = JustBib@2025 (par le mot de passe de votre username)
+	- après le lancement de votre application, pour éviter une suppression des données de votre base de données au lancement 
+	suivant de l'application, modifier aussi dans ce fichier src/main/resources/application.properties la donnée suivante :
+		- spring.jpa.hibernate.ddl-auto =create 
+	- indiquer à la place :
+ 		- spring.jpa.hibernate.ddl-auto =update
+
 - récupérer le package à installer sur le dépôt GitHub https://github.com/JeanLouisPIERA/Escalade
 - installer le package de l'application où vous le souhaitez sur votre disque dur
 - ouvrir la commande en ligne dans la directory où vous avez copié l'application
@@ -35,6 +47,7 @@ L'environnement d'installation minimum est :
 - une fois l'application lancée, taper http://localhost:8085/login dans votre navigateur.
 - pour vous logger en tant qu'administrateur taper l'identifiant "admin10" et le mot de passe "jeanlouis". Pour vous logger en
 tant qu'utilisateur, utiliser le lien prévu à cet effet sur la page d'accueil.
+
 
 
  
