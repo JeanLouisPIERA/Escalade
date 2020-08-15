@@ -35,5 +35,5 @@ L'environnement d'installation minimum est :
 - pour vous logger en tant qu'administrateur taper l'identifiant "admin10" et le mot de passe "jeanlouis". Pour vous logger en
 tant qu'utilisateur, utiliser le lien prévu à cet effet sur la page d'accueil.
 
-#Maj
+
  
